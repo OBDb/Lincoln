@@ -1,4 +1,165 @@
 { "commands": [
-
+{ "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "6185"}, "freq": 1,
+  "signals": [
+    {"id": "LINCOLN_FLI",       "path": "Fuel",  "fmt": {          "len": 8,  "max": 100,     "mul": 100, "div": 255, "unit": "percent"    }, "name": "Fuel tank level",                 "suggestedMetric": "fuelTankLevel"},
+    {"id": "LINCOLN_ODO",       "path": "Trips", "fmt": {          "len": 24, "max": 1677721,             "div": 10,  "unit": "kilometers" }, "name": "Odometer (Instrument panel)",     "suggestedMetric": "odometer"},
+    {"id": "LINCOLN_ODO_TRIP",  "path": "Trips", "fmt": {          "len": 24, "max": 1677721,             "div": 10,  "unit": "kilometers" }, "name": "Trip distance"},
+    {"id": "LINCOLN_TPMS_WARN", "path": "Tires", "fmt": {"bix": 2, "len": 1,  "max": 1,                               "unit": "offon"      }, "name": "Tire pressure warning indicator"}
+  ]},
+{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2813"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_TP_FL",               "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Front left tire pressure",       "suggestedMetric": "frontLeftTirePressure"},
+    {"id": "LINCOLN_TP_FR",               "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Front right tire pressure",      "suggestedMetric": "frontRightTirePressure"},
+    {"id": "LINCOLN_TP_RRO",              "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Rear right outer tire pressure", "suggestedMetric": "rearRightTirePressure"},
+    {"id": "LINCOLN_TP_RLO",              "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Rear left outer tire pressure",  "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "LINCOLN_TP_RRI",              "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Rear right inner tire pressure"},
+    {"id": "LINCOLN_TP_RLI",              "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Rear left inner tire pressure"},
+    {"id": "LINCOLN_ODO",                 "path": "Trips",           "fmt": {           "len": 24, "max": 16777215,            "unit": "kilometers" }, "name": "Odometer (Instrument panel)",    "suggestedMetric": "odometer"},
+    {"id": "LINCOLN_TP_RR",               "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Rear right outer tire pressure", "suggestedMetric": "rearRightTirePressure"},
+    {"id": "LINCOLN_TP_RL",               "path": "Tires",           "fmt": {           "len": 16, "max": 3276,     "div": 20, "unit": "psi"        }, "name": "Rear left outer tire pressure",  "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "LINCOLN_HIGHBEAM_STATUS",     "path": "Lights",          "fmt": {           "len": 16, "max": 2,                   "unit": "offon"      }, "name": "Highbeam Status"},
+    {"id": "LINCOLN_HOOD_OPEN",           "path": "Doors",           "fmt": {           "len": 1,  "max": 1,                   "unit": "noyes"      }, "name": "Hood Ajar?"},
+    {"id": "LINCOLN_TRUNK_OPEN",          "path": "Doors & Windows", "fmt": {"bix": 11, "len": 1,  "max": 1,                   "unit": "noyes"      }, "name": "Trunk Ajar?"},
+    {"id": "LINCOLN_RRD_OPEN",            "path": "Doors & Windows", "fmt": {"bix": 12, "len": 1,  "max": 1,                   "unit": "noyes"      }, "name": "Rear Right Door Ajar?"},
+    {"id": "LINCOLN_RLD_OPEN",            "path": "Doors & Windows", "fmt": {"bix": 13, "len": 1,  "max": 1,                   "unit": "noyes"      }, "name": "Rear Left Door Ajar?"},
+    {"id": "LINCOLN_DRIVER_DOOR_OPEN",    "path": "Doors & Windows", "fmt": {"bix": 16, "len": 1,  "max": 1,                   "unit": "noyes"      }, "name": "Driver Door Ajar"},
+    {"id": "LINCOLN_PASSENGER_DOOR_OPEN", "path": "Doors & Windows", "fmt": {"bix": 17, "len": 1,  "max": 1,                   "unit": "noyes"      }, "name": "Passenger Door Ajar?"},
+    {"id": "LINCOLN_EXTERIOR_LIGHT_STATE", "path": "Lights", "name": "Focus Exterior Lighting State", "fmt": {"bix": 0, "len": 1, "map": {
+          "0":   { "description": "0", "value": "0" },
+          "216": { "description": "1", "value": "1" }
+        }}
+    },
+    {"id": "LINCOLN_CENTRAL_LOCK_STATUS", "path": "Doors", "name": "Lock Status", "fmt": {"len": 8, "map": {
+          "0": { "description": "Unlocked", "value": "UNLOCKED" },
+          "2": { "description": "Locked",   "value": "LOCKED" }
+        }}
+    }
+  ]},
+{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "3201"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_STEER_ANGLE",   "path": "Control",      "fmt": { "len": 8, "max": 790, "min": -790, "mul": 6.25, "sign": true, "unit": "degrees" }, "name": "Steering wheel angle",      "description": "Positive is rotated to the left, negative is rotated to the right."},
+    {"id": "LINCOLN_PARKING_BRAKE", "path": "Transmission", "fmt": { "len": 1, "max": 1,                                           "unit": "offon"   }, "name": "Focus Parking Brake State"}
+  ]},
+{ "hdr": "764", "dbg": true, "cmd": {"22": "A224"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_CC_TGT_VSS", "path": "Cruise control", "fmt": { "len": 16, "max": 736, "min": -736, "mul": 3.6, "div": 10, "sign": true, "unit": "kilometersPerHour" }, "name": "Target vehicle speed", "description": "The speed of the vehicle ahead of you."}
+  ]},
+{ "hdr": "7DF", "dbg": true, "cmd": {"22": "1E1C"}, "freq": 1,
+  "signals": [
+    {"id": "LINCOLN_TOT",       "path": "Transmission", "fmt": { "len": 16, "max": 255, "div": 16, "unit": "celsius" }, "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_EOT",       "path": "Engine",       "fmt": { "len": 8,  "max": 255,            "unit": "scalar"  }, "name": "Engine oil temperature"},
+    {"id": "LINCOLN_GEAR",      "path": "Engine",       "fmt": { "len": 8,  "max": 255,            "unit": "scalar"  }, "name": "Current gear",                 "description": "The automatic transmission gear. Numbers aren't yet mapped to named gears."},
+    {"id": "LINCOLN_GEAR_SHFT", "path": "Engine",       "fmt": { "len": 8,  "max": 255,            "unit": "scalar"  }, "name": "Shift gear"},
+    {"id": "LINCOLN_FLI_v2",    "path": "Fuel",         "fmt": { "len": 8,  "max": 255,            "unit": "scalar"  }, "name": "Fuel level (alternative)"},
+    {"id": "LINCOLN_EOP",       "path": "Engine",       "fmt": { "len": 8,  "max": 255,            "unit": "scalar"  }, "name": "Engine oil pressure"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E12"}, "freq": 2,
+  "signals": [
+    {"id": "LINCOLN_TOT",                              "path": "Engine",       "fmt": {          "len": 16,      "max": 500,      "min": -500,                     "div": 16,  "sign": true,                   "unit": "celsius"    },                                                        "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_FLI",                              "path": "Fuel",         "fmt": {          "len": 8,       "max": 255,                           "mul": 100, "div": 255,                                 "unit": "percent"    },                                                        "name": "Fuel level",                                                                                                                         "suggestedMetric": "fuelTankLevel"},
+    {"id": "LINCOLN_ODO",                              "path": "Trips",        "fmt": {          "len": 24,      "max": 16777215,                                                                              "unit": "kilometers" },                                                        "name": "Odometer",                                                                                                                           "suggestedMetric": "odometer"},
+    {"id": "LINCOLN_[ECU] MAP voltage",                "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.0009765625,                                       "unit": "volts"   },                   "name": "Manifold absolute pressure sensor voltage",      "description": "Typically varies from 1 volt at idle to 5 volts during wide open throttle."},
+    {"id": "LINCOLN_[ECU] LPFP duty cycle",            "fmt":                  {      "len": 16, "max": 100,                      "mul": 0.0030517578,                                       "unit": "percent" },                   "name": "Low pressure fuel pump commanded duty cycle"},
+    {"id": "LINCOLN_[ECU] Commanded lambda",           "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.0000305176,                                       "unit": "scalar"  },                   "name": "Commanded lambda",                               "description": "The ratio of of oxygen in the combustion chamber compared to the amount that should have been present for ideal combustion."},
+    {"id": "LINCOLN_[ECU] VCT intake duty cycle",      "fmt":                  {      "len": 16, "max": 100,                      "mul": 0.0030517578,                                       "unit": "percent" },                   "name": "VCT intake camshaft solenoid duty cycle"},
+    {"id": "LINCOLN_[ECU] VCT exhaust duty cycle",     "fmt":                  {      "len": 16, "max": 100,                      "mul": 0.0030517578,                                       "unit": "percent" },                   "name": "VCT exhaust camshaft solenoid duty cycle"},
+    {"id": "LINCOLN_[ECU] VCT intake actual",          "fmt":                  {      "len": 16, "max": 0,       "min": -50,      "mul": 0.0625,                                             "unit": "degrees" },                   "name": "VCT intake camshaft actual"},
+    {"id": "LINCOLN_[ECU] VCT exhaust actual",         "fmt":                  {      "len": 16, "max": 50,                       "mul": 0.0625,                                             "unit": "degrees" },                   "name": "VCT exhaust camshaft actual"},
+    {"id": "LINCOLN_[ECU] VCT intake error",           "fmt":                  {      "len": 16, "max": 50,      "min": -50,      "mul": 0.0625,                                             "unit": "degrees" },                   "name": "VCT intake camshaft error"},
+    {"id": "LINCOLN_[ECU] VCT exhaust error",          "fmt":                  {      "len": 16, "max": 50,      "min": -50,      "mul": 0.0625,                                             "unit": "degrees" },                   "name": "VCT exhaust camshaft error"},
+    {"id": "LINCOLN_[ECU] HPFP sensor voltage",        "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.0048875855,                                       "unit": "volts"   },                   "name": "High pressure fuel rail sensor voltage"},
+    {"id": "LINCOLN_[ECU] Accelerator pedal position", "fmt":                  {      "len": 8,  "max": 100,                      "mul": 0.5,                                                "unit": "percent" },                   "name": "Accelerator Pedal Position"},
+    {"id": "LINCOLN_[ECU] ETC learned trim",           "fmt":                  {      "len": 16, "max": 90,      "min": -90,      "mul": 0.001953125,                                        "unit": "degrees" },                   "name": "Electronic throttle control learned trim angle"},
+    {"id": "LINCOLN_[ECU] TIP sensor voltage",         "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.0048828125,                                       "unit": "volts"   },                   "name": "Throttle inlet pressure sensor voltage"},
+    {"id": "LINCOLN_[ECU] TIP actual abs",             "fmt":                  {      "len": 16, "max": 60,                       "mul": 0.0011064263,                                       "unit": "psi"     },                   "name": "Throttle inlet pressure absolute"},
+    {"id": "LINCOLN_[ECU] Baro",                       "fmt":                  {      "len": 16, "max": 20,      "min": 8,        "mul": 0.0362553791,                                       "unit": "psi"     },                   "name": "Barometric pressure"},
+    {"id": "LINCOLN_[ECU] Baro Sensor V",              "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.0048875855,                                       "unit": "volts"   },                   "name": "Barometric pressure sensor voltage"},
+    {"id": "LINCOLN_[ECU] Rear O2 V",                  "fmt":                  {      "len": 16, "max": 1,                        "mul": 0.0009765625,                                       "unit": "volts"   },                   "name": "Rear O2 voltage"},
+    {"id": "LINCOLN_[ECU] Evap Pres Sensor V",         "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.1998046869,                                       "unit": "volts"   },                   "name": "Evaporative vapor pressure sensor voltage"},
+    {"id": "LINCOLN_[ECU] ECT",                        "fmt":                  {      "len": 16, "max": 148.889, "min": -40,      "mul": 0.015625,                                           "unit": "celsius" },                   "name": "Engine coolant temperature"},
+    {"id": "LINCOLN_[ECU] AC Pressure",                "fmt":                  {      "len": 16, "max": 1000,    "min": -100,     "mul": 0.2900754962,                                       "unit": "psi"     },                   "name": "Air conditioning compressor pressure"},
+    {"id": "LINCOLN_[ECU] AAT Sensor V",               "fmt":                  {      "len": 16, "max": 5,                        "mul": 0.0048875855,                                       "unit": "volts"   },                   "name": "Ambient air temperature sensor voltage"},
+    {"id": "LINCOLN_[ECU] VCT Exh Des",                "fmt":                  {      "len": 16, "max": 50,                       "mul": 0.0625,                                             "unit": "degrees" },                   "name": "VCT exhaust cam desired"},
+    {"id": "LINCOLN_[ECU] VCT Int Des",                "fmt":                  {      "len": 16, "max": 0,       "min": -50,      "mul": 0.0625,                                             "unit": "degrees" },                   "name": "VCT intake cam desired"},
+    {"id": "LINCOLN_[ECU] CL Lambda Corr",             "fmt":                  {      "len": 16, "max": 5,       "min": -5,       "mul": 0.0001220703,                                       "unit": "scalar"  },                   "name": "Closed loop lambda correction"},
+    {"id": "LINCOLN_[ECU] MCT",                        "fmt":                  {      "len": 8,  "max": 148.889,                                                                             "unit": "celsius" },                   "name": "Manifold charge temperature"},
+    {"id": "LINCOLN_[ECU] HPFP Desired",               "fmt":                  {      "len": 16, "max": 3500,                     "mul": 1.4503773969,                                       "unit": "psi"     },                   "name": "High pressure fuel pressure desired"},
+    {"id": "LINCOLN_[ECU] OAR",                        "fmt":                  {      "len": 16, "max": 1,       "min": -1,       "mul": 0.0000610352,                                       "unit": "scalar"  },                   "name": "Octane adjust ratio"},
+    {"id": "LINCOLN_TOT_v2",                           "path": "Transmission", "fmt": {          "len": 16,      "max": 255,                                       "div": 16,                                  "unit": "celsius"    },                                                        "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_FLI_v3",                           "path": "Fuel",         "fmt": {          "len": 8,       "max": 255,                           "mul": 100, "div": 255,                                 "unit": "percent"    },                                                        "name": "Fuel level",                                                                                                                         "suggestedMetric": "fuelTankLevel"},
+    {"id": "LINCOLN_GEAR", "path": "Engine", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
+          "1":  { "description": "First gear",   "value": "1" },
+          "2":  { "description": "Second gear",  "value": "2" },
+          "3":  { "description": "Third gear",   "value": "3" },
+          "4":  { "description": "Fourth gear",  "value": "4" },
+          "5":  { "description": "Fifth gear",   "value": "5" },
+          "6":  { "description": "Sixth gear",   "value": "6" },
+          "7":  { "description": "Seventh gear", "value": "7" },
+          "8":  { "description": "Eighth gear",  "value": "8" },
+          "9":  { "description": "Ninth gear",   "value": "9" },
+          "10": { "description": "Tenth gear",   "value": "10" }
+        }}
+    },
+    {"id": "LINCOLN_GEAR_SHFT", "path": "Engine", "name": "Shift gear", "fmt": {"len": 8, "map": {
+          "10": { "description": "Manual",  "value": "MANUAL" },
+          "46": { "description": "Drive",   "value": "DRIVE" },
+          "50": { "description": "Neutral", "value": "NEUTRAL" },
+          "60": { "description": "Reverse", "value": "REVERSE" },
+          "70": { "description": "Park",    "value": "PARK" }
+        }}
+    },
+    {"id": "LINCOLN_GEAR_v2", "path": "Transmission", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
+          "1":  { "description": "First gear",   "value": "1" },
+          "2":  { "description": "Second gear",  "value": "2" },
+          "3":  { "description": "Third gear",   "value": "3" },
+          "4":  { "description": "Fourth gear",  "value": "4" },
+          "5":  { "description": "Fifth gear",   "value": "5" },
+          "6":  { "description": "Sixth gear",   "value": "6" },
+          "7":  { "description": "Seventh gear", "value": "7" },
+          "8":  { "description": "Eighth gear",  "value": "8" },
+          "9":  { "description": "Ninth gear",   "value": "9" },
+          "10": { "description": "Tenth gear",   "value": "10" }
+        }}
+    },
+    {"id": "LINCOLN_GEAR_SHFT_v2", "path": "Transmission", "name": "Shift gear", "fmt": {"len": 8, "map": {
+          "10": { "description": "Manual",  "value": "MANUAL" },
+          "46": { "description": "Drive",   "value": "DRIVE" },
+          "50": { "description": "Neutral", "value": "NEUTRAL" },
+          "60": { "description": "Reverse", "value": "REVERSE" },
+          "70": { "description": "Park",    "value": "PARK" }
+        }}
+    }
+  ]},
+{ "hdr": "7E2", "rax": "7EA", "fcm1": true, "dbg": true, "cmd": {"22": "DD04"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_IAT", "path": "Climate", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Interior temperature"},
+    {"id": "LINCOLN_AAT", "path": "Climate", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Exterior temperature"}
+  ]},
+{ "hdr": "7E4", "rax": "7EC", "fcm1": true, "dbg": true, "cmd": {"22": "4800"}, "freq": 10,
+  "signals": [
+    {"id": "LINCOLN_HVBAT_T",        "path": "Battery", "fmt": { "len": 8,  "max": 205,    "min": -50,                         "add": -50, "unit": "celsius"       }, "name": "HV battery temperature"},
+    {"id": "LINCOLN_HVBAT_SOC",      "path": "Battery", "fmt": { "len": 16, "max": 100,                            "div": 500,             "unit": "percent"       }, "name": "HV battery charge",             "suggestedMetric": "stateOfCharge", "description": "High resolution state of charge."},
+    {"id": "LINCOLN_HVBAT_V",        "path": "Battery", "fmt": { "len": 16, "max": 655.35,                         "div": 100,             "unit": "volts"         }, "name": "HV battery voltage"},
+    {"id": "LINCOLN_HVBAT_AGE",      "path": "Battery", "fmt": { "len": 16, "max": 235926,             "mul": 720, "div": 200,             "unit": "hours"         }, "name": "HV battery age"},
+    {"id": "LINCOLN_HVBAT_SOC_DISP", "path": "Battery", "fmt": { "len": 8,  "max": 100,                            "div": 2,               "unit": "percent"       }, "name": "HV battery charge (displayed)", "suggestedMetric": "stateOfCharge", "description": "The state of charge displayed on the vehicle's dashboard."},
+    {"id": "LINCOLN_HVBAT_KWH",      "path": "Battery", "fmt": { "len": 16, "max": 131.07,                         "div": 500,             "unit": "kilowattHours" }, "name": "HV battery energy"},
+    {"id": "LINCOLN_HVBAT_SOH",      "path": "Battery", "fmt": { "len": 8,  "max": 100,                            "div": 2,               "unit": "percent"       }, "name": "HV battery state of health",    "suggestedMetric": "stateOfHealth"},
+    {"id": "LINCOLN_CHRG_STATE", "path": "Battery", "name": "Charging state", "suggestedMetric": "isCharging", "fmt": {"len": 8, "map": {
+          "0": { "description": "Not ready",        "value": "NOT_READY" },
+          "1": { "description": "Ready",            "value": "READY" },
+          "2": { "description": "Fault",            "value": "FAULT" },
+          "3": { "description": "Wait Check",       "value": "WAIT" },
+          "4": { "description": "Pre-condition",    "value": "PRE_COND" },
+          "5": { "description": "Charging",         "value": "CHARGING" },
+          "6": { "description": "Done",             "value": "DONE" },
+          "7": { "description": "External Charger", "value": "EXT" },
+          "8": { "description": "Initializing",     "value": "INIT" }
+        }}
+    }
+  ]},
+{ "hdr": "7E6", "rax": "7EE", "fcm1": true, "dbg": true, "cmd": {"22": "1E1C"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_TT", "path": "Transmission", "fmt": { "len": 16, "max": 300, "min": -300, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission temperature"}
+  ]}
 ]
 }

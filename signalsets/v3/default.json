@@ -236,7 +236,7 @@
           "10": { "description": "Tenth gear",   "value": "10" }
         }}
     },
-    {"id": "LINCOLN_GEAR_v2", "path": "Transmission", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR_v2", "path": "Engine", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
           "1":  { "description": "First gear",   "value": "1" },
           "2":  { "description": "Second gear",  "value": "2" },
           "3":  { "description": "Third gear",   "value": "3" },
@@ -252,8 +252,9 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E1C"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_TOT",    "path": "Engine",       "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature"},
-    {"id": "LINCOLN_TOT_v2", "path": "Transmission", "fmt": { "len": 16, "max": 255,              "div": 16,               "unit": "celsius" }, "name": "Transmission oil temperature"}
+    {"id": "LINCOLN_TOT",       "path": "Engine",       "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_TOT_v2",    "path": "Engine",       "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_TOT_v2_v2", "path": "Transmission", "fmt": { "len": 16, "max": 255,              "div": 16,               "unit": "celsius" }, "name": "Transmission oil temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E23"}, "freq": 2,
   "signals": [
@@ -265,7 +266,7 @@
           "70": { "description": "Park",    "value": "PARK" }
         }}
     },
-    {"id": "LINCOLN_GEAR_SHFT_v2", "path": "Transmission", "name": "Shift gear", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR_SHFT_v2", "path": "Engine", "name": "Shift gear", "fmt": {"len": 8, "map": {
           "10": { "description": "Manual",  "value": "MANUAL" },
           "46": { "description": "Drive",   "value": "DRIVE" },
           "50": { "description": "Neutral", "value": "NEUTRAL" },
@@ -281,6 +282,7 @@
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F42F"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_FLI",    "path": "Fuel", "fmt": { "len": 8, "max": 255, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"},
+    {"id": "LINCOLN_FLI_v2", "path": "Fuel", "fmt": { "len": 8, "max": 255, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"},
     {"id": "LINCOLN_FLI_v3", "path": "Fuel", "fmt": { "len": 8, "max": 255, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "fcm1": true, "dbg": true, "cmd": {"22": "DD04"}, "freq": 5,

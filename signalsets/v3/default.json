@@ -57,7 +57,7 @@
   ]},
 { "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "6180"}, "freq": 30,
   "signals": [
-    {"id": "LINCOLN_ODO_720", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer", "suggestedMetric": "odometer"}
+    {"id": "LINCOLN_ODO_720", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer"}
   ]},
 { "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "6185"}, "freq": 1,
   "signals": [
@@ -120,12 +120,12 @@
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4027"}, "freq": 3600,
   "signals": [
     {"id": "LINCOLN_BATT_AGE", "path": "Battery", "fmt": { "len": 16, "max": 1825,               "unit": "scalar" }, "name": "Battery age"},
-    {"id": "LINCOLN_12V_AGE",  "path": "Battery", "fmt": { "len": 16, "max": 1572840, "mul": 24, "unit": "hours"  }, "name": "Aux 12V battery age"}
+    {"id": "LINCOLN_12V_AGE",  "path": "Battery", "fmt": { "len": 16, "max": 1572840, "mul": 24, "unit": "hours"  }, "name": "12V battery age"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4028"}, "freq": 10,
   "signals": [
     {"id": "LINCOLN_BATT_SOC", "path": "Battery", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Battery charge"},
-    {"id": "LINCOLN_12V_SOC",  "path": "Battery", "fmt": { "len": 8, "max": 100,                         "unit": "percent" }, "name": "Aux 12V battery state of charge"}
+    {"id": "LINCOLN_12V_SOC",  "path": "Battery", "fmt": { "len": 8, "max": 100,                         "unit": "percent" }, "name": "12V battery state of charge"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4029"}, "freq": 10,
   "signals": [
@@ -293,7 +293,8 @@
   ]},
 { "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "DD01"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_ODO_BCM", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "unit": "kilometers" }, "name": "Odometer, battery control module", "suggestedMetric": "odometer"}
+    {"id": "LINCOLN_ABS_ODO", "path": "Trips", "fmt": { "len": 24, "max": 16777215,                      "unit": "kilometers" }, "name": "Odometer, brake module",           "suggestedMetric": "odometer"},
+    {"id": "LINCOLN_ODO_BCM", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "nullmax": 16777214, "unit": "kilometers" }, "name": "Odometer, battery control module", "suggestedMetric": "odometer"}
   ]},
 { "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "DD05"}, "freq": 5,
   "signals": [
@@ -596,6 +597,10 @@
   "signals": [
     {"id": "LINCOLN_BPV_OPEN", "path": "Engine", "fmt": { "len": 8, "max": 1, "div": 255, "unit": "scalar" }, "name": "Bypass valve"}
   ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0429"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_FUEL_T_7E0", "path": "Fuel", "fmt": { "len": 16, "max": 511, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Fuel temperature a"}
+  ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "042C"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_DPF_SOOT_LEVEL", "path": "Engine", "fmt": { "len": 16, "max": 5657, "min": -57.14, "mul": 0.0871944108, "add": -57.142857, "unit": "percent" }, "name": "Diesel particulate filter soot level percentage"}
@@ -681,7 +686,7 @@
   "signals": [
     {"id": "LINCOLN_GEN_CURRENT", "path": "Engine", "fmt": { "len": 16, "max": 511.8205, "min": -511.8361, "mul": 781, "div": 50000, "sign": true, "unit": "amps" }, "name": "Generator current"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0508"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0508"}, "freq": 5,
   "signals": [
     {"id": "LINCOLN_CHG_AIR_COOLER_T", "path": "Battery", "fmt": {          "len": 16, "max": 524280, "mul": 8, "unit": "unknown" }, "name": "Charge air cooler temperature"},
     {"id": "LINCOLN_CALC_SOOT_OIL",    "path": "Engine",  "fmt": {"bix": 7, "len": 1,  "max": 8,      "mul": 8, "unit": "offon"   }, "name": "Calculated soot in oil"}
@@ -712,7 +717,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0543"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_EGR_T_V2", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
+    {"id": "LINCOLN_EGR_T", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0548"}, "freq": 1,
   "signals": [
@@ -722,9 +727,21 @@
   "signals": [
     {"id": "LINCOLN_PCM_ENG_OIL_LIFE_REM", "path": "Engine", "fmt": { "len": 8, "max": 100, "unit": "percent" }, "name": "Oil life remaining"}
   ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "054C"}, "freq": 1,
+  "signals": [
+    {"id": "LINCOLN_DILUTION_OIL_FUEL", "path": "Fuel", "fmt": { "len": 8, "max": 255, "unit": "percent" }, "name": "Dilution of oil with fuel"}
+  ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "054D"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_LPFP_SENS_V", "path": "Engine", "fmt": { "len": 16, "max": 5, "div": 1024, "sign": true, "unit": "volts" }, "name": "Fuel pressure sensor voltage, low"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "055D"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_EGR_COOLER_OUTLET_T", "path": "Engine", "fmt": { "len": 16, "max": 1022, "min": -1022, "mul": 39, "div": 1250, "sign": true, "unit": "celsius" }, "name": "Exhaust gas recirculation cooler outlet temperature"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0569"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_EGR_COOLER_INLET_T", "path": "Engine", "fmt": { "len": 16, "max": 1022, "min": -1022, "mul": 39, "div": 1250, "sign": true, "unit": "celsius" }, "name": "Exhaust gas recirculation cooler inlet temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0579"}, "freq": 1,
   "signals": [
@@ -913,7 +930,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "115F"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_EGR_T", "path": "Engine", "fmt": { "len": 16, "max": 11756, "min": -40, "mul": 9, "div": 50, "add": -40, "unit": "fahrenheit" }, "name": "Exhaust gas recirculation temperature a"}
+    {"id": "LINCOLN_EGR_T_115F", "path": "Engine", "fmt": { "len": 16, "max": 11756, "min": -40, "mul": 9, "div": 50, "add": -40, "unit": "fahrenheit" }, "name": "Exhaust gas recirculation temperature a"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1161"}, "freq": 5,
   "signals": [
@@ -1152,6 +1169,10 @@
   "signals": [
     {"id": "LINCOLN_AWD_CLU_CMD_CTRL_SIG", "path": "Transmission", "fmt": { "len": 8, "max": 100, "mul": 20, "div": 51, "unit": "percent" }, "name": "All-wheel drive clutch, commanded control signal"}
   ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "2028"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_BRAKE_BOOSTER_P", "path": "Control", "fmt": { "len": 16, "max": 327, "min": -327, "div": 100, "sign": true, "unit": "kilopascal" }, "name": "Brake booster pressure"}
+  ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "4028"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_BAT_PERCENTAGE_ST", "path": "Battery", "fmt": { "len": 8, "max": 255, "unit": "percent" }, "name": "Battery percentage, state of charge"}
@@ -1275,7 +1296,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F46B"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_EGR_T_7E0", "path": "Engine", "fmt": { "len": 16, "max": 6513, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
+    {"id": "LINCOLN_EGR_T_7E0_7E0", "path": "Engine", "fmt": { "len": 16, "max": 6513, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F478"}, "freq": 5,
   "signals": [
@@ -1313,6 +1334,14 @@
   "signals": [
     {"id": "LINCOLN_ATF_T_VAR_2", "path": "Transmission", "fmt": { "len": 16, "max": 65535, "unit": "fahrenheit" }, "name": "Transmission fluid temperature, variant 2"}
   ]},
+{ "hdr": "7E1", "rax": "7E9", "dbg": true, "cmd": {"22": "180F"}, "freq": 1,
+  "signals": [
+    {"id": "LINCOLN_TRANS_FLUID_FLUID", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Transmission fluid fluid quality"}
+  ]},
+{ "hdr": "7E1", "rax": "7E9", "dbg": true, "cmd": {"22": "1E1F"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_GEAR_7E1", "path": "Transmission", "fmt": { "len": 16, "max": 2047, "min": -2048, "div": 16, "sign": true, "unit": "scalar" }, "name": "Gear"}
+  ]},
 { "hdr": "7E1", "rax": "7E9", "dbg": true, "cmd": {"22": "1E3F"}, "freq": 5,
   "signals": [
     {"id": "LINCOLN_ATF_T_VAR_5", "path": "Transmission", "fmt": { "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "celsius" }, "name": "Transmission fluid temperature, variant 5"}
@@ -1343,7 +1372,8 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "484A"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_CHG_OUT_V", "path": "Battery", "fmt": { "len": 16, "max": 600, "div": 100, "unit": "volts" }, "name": "HV charger output voltage"}
+    {"id": "LINCOLN_CHG_OUT_V",        "path": "Battery", "fmt": { "len": 16, "max": 600,   "div": 100, "unit": "volts"  }, "name": "HV charger output voltage"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_V", "path": "Battery", "fmt": { "len": 16, "max": 65535,             "unit": "scalar" }, "name": "High voltage charger output voltage, raw count"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "484D"}, "freq": 1,
   "signals": [
@@ -1351,7 +1381,8 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "484E"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_CHG_PWR_AVAIL", "path": "Battery", "fmt": { "len": 16, "max": 327.675, "div": 200, "unit": "kilowatts" }, "name": "HV charger input power available"}
+    {"id": "LINCOLN_CHG_PWR_AVAIL",        "path": "Battery", "fmt": { "len": 16, "max": 327.675, "div": 200, "unit": "kilowatts" }, "name": "HV charger input power available"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_INPUT", "path": "Battery", "fmt": { "len": 16, "max": 65535,               "unit": "scalar"    }, "name": "High voltage charger input power available, raw count"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "484F"}, "freq": 1,
   "signals": [
@@ -1359,6 +1390,7 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "4851"}, "freq": 5,
   "signals": [
+    {"id": "LINCOLN_EVSE_CHG_RAW_CNT", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Charging station connection, raw count"},
     {"id": "LINCOLN_EVSE_TYPE", "path": "Battery", "name": "Charger type", "fmt": {"len": 8, "map": {
           "0":  { "description": "None",             "value": "NONE" },
           "1":  { "description": "Level 1",          "value": "LEVEL_1" },
@@ -1415,14 +1447,17 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "4888"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_AC_CHG_COUPLER_T", "path": "Battery", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "HV AC charger coupler temperature"}
+    {"id": "LINCOLN_AC_CHG_COUPLER_T",    "path": "Battery", "fmt": { "len": 8, "max": 215, "min": -40,                     "add": -40, "unit": "celsius"    }, "name": "HV AC charger coupler temperature"},
+    {"id": "LINCOLN_HIGH_V_AC_CHARGER_T", "path": "Battery", "fmt": { "len": 8, "max": 419, "min": -40, "mul": 9, "div": 5, "add": -40, "unit": "fahrenheit" }, "name": "High voltage AC charger coupler temperature"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "4897"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_DC_CHG_COUPLER_T1", "path": "Battery", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "HV DC charger coupler temperature 1"}
+    {"id": "LINCOLN_DC_CHG_COUPLER_T1",     "path": "Battery", "fmt": { "len": 8, "max": 215, "min": -40,                     "add": -40, "unit": "celsius"    }, "name": "HV DC charger coupler temperature 1"},
+    {"id": "LINCOLN_HIGH_V_DC_CHARGER_T_1", "path": "Battery", "fmt": { "len": 8, "max": 419, "min": -40, "mul": 9, "div": 5, "add": -40, "unit": "fahrenheit" }, "name": "High voltage DC charger coupler temperature 1"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "489E"}, "freq": 5,
   "signals": [
+    {"id": "LINCOLN_HIGH_V_DC_CHARGER", "path": "Battery", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "High voltage DC charger status"},
     {"id": "LINCOLN_DC_CHG_STATUS", "path": "Battery", "name": "HV DC charger status", "fmt": {"len": 8, "map": {
           "0":  { "description": "Not ready",     "value": "NOT_READY" },
           "1":  { "description": "Initialize",    "value": "INIT" },
@@ -1444,15 +1479,18 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "48A4"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_DC_CHG_COUPLER_T3", "path": "Battery", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "HV DC charger coupler temperature 3"}
+    {"id": "LINCOLN_DC_CHG_COUPLER_T3",     "path": "Battery", "fmt": { "len": 8, "max": 215, "min": -40,                     "add": -40, "unit": "celsius"    }, "name": "HV DC charger coupler temperature 3"},
+    {"id": "LINCOLN_HIGH_V_DC_CHARGER_T_3", "path": "Battery", "fmt": { "len": 8, "max": 419, "min": -40, "mul": 9, "div": 5, "add": -40, "unit": "fahrenheit" }, "name": "High voltage DC charger coupler temperature 3"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "48A5"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_CHG_OUT_REDUCT_T", "path": "Battery", "fmt": { "len": 8, "max": 100, "unit": "percent" }, "name": "HV charger output reduction temperature"}
+    {"id": "LINCOLN_CHG_OUT_REDUCT_T", "path": "Battery", "fmt": { "len": 8, "max": 100, "unit": "percent" }, "name": "HV charger output reduction temperature"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_T", "path": "Battery", "fmt": { "len": 8, "max": 255, "unit": "percent" }, "name": "High voltage charger output reduction temperature"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "48B6"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_CHG_PILOT_V", "path": "Battery", "fmt": { "len": 8, "max": 15, "div": 10, "unit": "volts" }, "name": "HV charger pilot voltage"}
+    {"id": "LINCOLN_CHG_PILOT_V",            "path": "Battery", "fmt": { "len": 8, "max": 15,   "div": 10, "unit": "volts" }, "name": "HV charger pilot voltage"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_PILOT_V", "path": "Battery", "fmt": { "len": 8, "max": 25.5, "div": 10, "unit": "volts" }, "name": "High voltage charger pilot voltage"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "48B7"}, "freq": 5,
   "signals": [
@@ -1473,11 +1511,13 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "48BC"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_HVBAT_MAX_CHG_A", "path": "Battery", "fmt": { "len": 16, "max": 15, "div": 20, "unit": "amps" }, "name": "HV battery maximum charge current"}
+    {"id": "LINCOLN_HVBAT_MAX_CHG_A",            "path": "Battery", "fmt": { "len": 16, "max": 15,    "div": 20, "unit": "amps"   }, "name": "HV battery maximum charge current"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_PILOT_V_RAW", "path": "Battery", "fmt": { "len": 16, "max": 65535,            "unit": "scalar" }, "name": "High voltage charger pilot voltage, raw count"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "48C4"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_CHG_MAX_PWR", "path": "Battery", "fmt": { "len": 16, "max": 500, "div": 20, "unit": "kilowatts" }, "name": "HV charger maximum power"}
+    {"id": "LINCOLN_CHG_MAX_PWR",        "path": "Battery", "fmt": { "len": 16, "max": 500,   "div": 20, "unit": "kilowatts" }, "name": "HV charger maximum power"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_MAX", "path": "Battery", "fmt": { "len": 16, "max": 65535,            "unit": "kilowatts" }, "name": "High voltage charger, maximum power"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "D00C"}, "freq": 1,
   "signals": [
@@ -1485,7 +1525,7 @@
   ]},
 { "hdr": "7E2", "rax": "7EA", "dbg": true, "cmd": {"22": "D117"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_HIGH_V_AC_CHARGER_T", "path": "Battery", "fmt": { "len": 8, "max": 419, "min": -40, "mul": 9, "div": 5, "add": -40, "unit": "fahrenheit" }, "name": "High voltage AC charger coupler temperature"}
+    {"id": "LINCOLN_HIGH_V_AC_CHARGER_T_V2", "path": "Battery", "fmt": { "len": 8, "max": 419, "min": -40, "mul": 9, "div": 5, "add": -40, "unit": "fahrenheit" }, "name": "High voltage AC charger coupler temperature"}
   ]},
 { "hdr": "7E2", "rax": "7EA", "fcm1": true, "dbg": true, "cmd": {"22": "DD04"}, "freq": 5,
   "signals": [
@@ -1666,7 +1706,8 @@
   ]},
 { "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "4850"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_CHG_OUT_A", "path": "Battery", "fmt": { "len": 16, "max": 600, "div": 100, "unit": "amps" }, "name": "HV charger output current measured"}
+    {"id": "LINCOLN_CHG_OUT_A",             "path": "Battery", "fmt": { "len": 16, "max": 600,   "div": 100, "unit": "amps" }, "name": "HV charger output current measured"},
+    {"id": "LINCOLN_HIGH_V_CHARGER_OUTPUT", "path": "Battery", "fmt": { "len": 16, "max": 65535,             "unit": "amps" }, "name": "High voltage charger output current measured"}
   ]},
 { "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "4852"}, "freq": 1,
   "signals": [
@@ -1682,7 +1723,8 @@
   ]},
 { "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "48F9"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_HVBAT_A", "path": "Battery", "fmt": { "len": 16, "max": 600, "min": -600, "div": 10, "sign": true, "unit": "amps" }, "name": "HV battery current", "suggestedMetric": "tractionBatteryCurrent"}
+    {"id": "LINCOLN_HVBAT_A",     "path": "Battery", "fmt": { "len": 16, "max": 600,  "min": -600,  "div": 10, "sign": true, "unit": "amps" }, "name": "HV battery current",           "suggestedMetric": "tractionBatteryCurrent"},
+    {"id": "LINCOLN_HVB_CURRENT", "path": "Battery", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "amps" }, "name": "High-voltage battery current"}
   ]},
 { "hdr": "7E4", "rax": "7EC", "dbg": true, "cmd": {"22": "48FB"}, "freq": 1,
   "signals": [

@@ -124,8 +124,7 @@
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4028"}, "freq": 10,
   "signals": [
-    {"id": "LINCOLN_BATT_SOC", "path": "Battery", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Battery charge"},
-    {"id": "LINCOLN_12V_SOC",  "path": "Battery", "fmt": { "len": 8, "max": 100,                         "unit": "percent" }, "name": "12V battery state of charge"}
+    {"id": "LINCOLN_BATT_SOC", "path": "Battery", "fmt": { "len": 8, "max": 100, "unit": "percent" }, "name": "Battery charge"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4029"}, "freq": 10,
   "signals": [
@@ -261,7 +260,7 @@
   ]},
 { "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B0C"}, "freq": 0.25,
   "signals": [
-    {"id": "LINCOLN_LAT_ANG", "path": "Movement", "fmt": { "len": 8, "max": 90, "min": -90, "sign": true, "unit": "degrees" }, "name": "Lateral angle"}
+    {"id": "LINCOLN_LAT_ANG", "path": "Movement", "fmt": { "len": 16, "max": 32767, "min": -32768, "sign": true, "unit": "scalar" }, "name": "Lateral angle"}
   ]},
 { "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B0D"}, "freq": 0.25,
   "signals": [
@@ -491,8 +490,8 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038E"}, "freq": 0.25,
   "signals": [
-    {"id": "LINCOLN_EVAP_V",   "fmt":            {      "len": 16, "max": 5,                "mul": 0.1998046869, "unit": "volts" },               "name": "Evaporative vapor pressure sensor voltage"},
-    {"id": "LINCOLN_EVAP_RAW", "path": "Engine", "fmt": {          "len": 16, "max": 65535,                                      "unit": "scalar" },                                                   "name": "Evaporative pressure sensor, raw count"}
+    {"id": "LINCOLN_EVAP_V",   "fmt":            {      "len": 16, "max": 65.535,               "div": 1000, "unit": "volts" },               "name": "Evaporative vapor pressure sensor voltage"},
+    {"id": "LINCOLN_EVAP_RAW", "path": "Engine", "fmt": {          "len": 16,     "max": 65535,                              "unit": "scalar" },                                                   "name": "Evaporative pressure sensor, raw count"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038F"}, "freq": 0.25,
   "signals": [

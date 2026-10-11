@@ -52,26 +52,58 @@
   "signals": [
     {"id": "LINCOLN_HYDRAULIC_PMP_MOTOR", "path": "Engine", "fmt": { "len": 16, "max": 655, "div": 100, "unit": "amps" }, "name": "Hydraulic pump motor current"}
   ]},
-{ "hdr": "720", "dbg": true, "cmd": {"22": "6185"}, "freq": 1,
+{ "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "404C"}, "freq": 30,
   "signals": [
-    {"id": "LINCOLN_FLI_V2", "path": "Fuel", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel tank level", "suggestedMetric": "fuelTankLevel"}
-  ]},
-{ "hdr": "720", "dbg": true, "cmd": {"22": "61A5"}, "freq": 30,
-  "signals": [
-    {"id": "LINCOLN_TPMS_WARN", "path": "Tires", "fmt": {"bix": 2, "len": 1, "max": 1, "unit": "offon" }, "name": "Tire pressure warning indicator"}
-  ]},
-{ "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "404C"}, "freq": 5,
-  "signals": [
-    {"id": "LINCOLN_ODO_V3", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer, instrument panel", "suggestedMetric": "odometer"},
-    {"id": "LINCOLN_ODO_V2", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer"}
+    {"id": "LINCOLN_ODO_V2",  "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer", "suggestedMetric": "odometer"},
+    {"id": "LINCOLN_IPC_ODO", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer"}
   ]},
 { "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "6180"}, "freq": 30,
   "signals": [
     {"id": "LINCOLN_ODO_720", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Odometer"}
   ]},
+{ "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "6185"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_FLI_ALT", "path": "Fuel", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level, alternate", "suggestedMetric": "fuelTankLevel"}
+  ]},
+{ "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "61A5"}, "freq": 10,
+  "signals": [
+    {"id": "LINCOLN_TPMS_WARN", "path": "Tires", "fmt": {"bix": 2, "len": 1, "max": 1, "unit": "offon" }, "name": "Tire pressure warning"}
+  ]},
 { "hdr": "720", "rax": "728", "dbg": true, "cmd": {"22": "DD01"}, "freq": 30,
   "signals": [
     {"id": "LINCOLN_ODO_TRIP", "path": "Trips", "fmt": { "len": 24, "max": 1677721, "div": 10, "unit": "kilometers" }, "name": "Trip distance"}
+  ]},
+{ "hdr": "726", "dbg": true, "cmd": {"22": "407E"}, "freq": 1,
+  "signals": [
+    {"id": "LINCOLN_EXTERIOR_LIGHT_STATE", "path": "Lights", "name": "Focus exterior lighting state", "fmt": {"bix": 0, "len": 1, "map": {
+          "0":   { "description": "0", "value": "0" },
+          "216": { "description": "1", "value": "1" }
+        }}
+    }
+  ]},
+{ "hdr": "726", "dbg": true, "cmd": {"22": "7151"}, "freq": 4,
+  "signals": [
+    {"id": "LINCOLN_HIGHBEAM_STATUS", "path": "Lights", "fmt": { "len": 16, "max": 2, "unit": "offon" }, "name": "High beam status"}
+  ]},
+{ "hdr": "726", "dbg": true, "cmd": {"22": "C150"}, "freq": 3,
+  "signals": [
+    {"id": "LINCOLN_TRUNK_OPEN",          "path": "Doors", "fmt": {"bix": 11, "len": 1, "max": 1, "unit": "noyes" }, "name": "Trunk ajar?"},
+    {"id": "LINCOLN_RRD_OPEN",            "path": "Doors", "fmt": {"bix": 12, "len": 1, "max": 1, "unit": "noyes" }, "name": "Rear right door ajar?"},
+    {"id": "LINCOLN_RLD_OPEN",            "path": "Doors", "fmt": {"bix": 13, "len": 1, "max": 1, "unit": "noyes" }, "name": "Rear left door ajar?"},
+    {"id": "LINCOLN_DRIVER_DOOR_OPEN",    "path": "Doors", "fmt": {"bix": 16, "len": 1, "max": 1, "unit": "noyes" }, "name": "Driver door ajar"},
+    {"id": "LINCOLN_PASSENGER_DOOR_OPEN", "path": "Doors", "fmt": {"bix": 17, "len": 1, "max": 1, "unit": "noyes" }, "name": "Passenger door ajar?"}
+  ]},
+{ "hdr": "726", "dbg": true, "cmd": {"22": "C154"}, "freq": 3,
+  "signals": [
+    {"id": "LINCOLN_HOOD_OPEN", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "noyes" }, "name": "Hood ajar?"}
+  ]},
+{ "hdr": "726", "dbg": true, "cmd": {"22": "C259"}, "freq": 2,
+  "signals": [
+    {"id": "LINCOLN_CENTRAL_LOCK_STATUS", "path": "Doors", "name": "Lock status", "fmt": {"len": 8, "map": {
+          "0": { "description": "Unlocked", "value": "UNLOCKED" },
+          "2": { "description": "Locked",   "value": "LOCKED" }
+        }}
+    }
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "280B"}, "freq": 5,
   "signals": [
@@ -79,35 +111,35 @@
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2813"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_FL",     "path": "Tires", "fmt": { "len": 16, "max": 3276, "div": 20,                               "unit": "psi" }, "name": "Front left tire pressure", "suggestedMetric": "frontLeftTirePressure"},
-    {"id": "LINCOLN_MAX_TP_FL", "path": "Tires", "fmt": { "len": 16, "max": 150,  "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi" }, "name": "Front left tire pressure", "suggestedMetric": "frontLeftTirePressure"}
+    {"id": "LINCOLN_TP_FL",     "path": "Tires", "fmt": { "len": 16, "max": 149.95, "div": 20,               "nullmax": 149.95, "unit": "psi" }, "name": "Front left tire pressure", "suggestedMetric": "frontLeftTirePressure"},
+    {"id": "LINCOLN_MAX_TP_FL", "path": "Tires", "fmt": { "len": 16, "max": 150,    "div": 20, "nullmin": 0, "nullmax": 150,    "unit": "psi" }, "name": "Front left tire pressure", "suggestedMetric": "frontLeftTirePressure"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2814"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_FR",     "path": "Tires", "fmt": { "len": 16, "max": 3276, "div": 20,                               "unit": "psi" }, "name": "Front right tire pressure", "suggestedMetric": "frontRightTirePressure"},
-    {"id": "LINCOLN_MAX_TP_FR", "path": "Tires", "fmt": { "len": 16, "max": 150,  "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi" }, "name": "Front right tire pressure", "suggestedMetric": "frontRightTirePressure"}
+    {"id": "LINCOLN_TP_FR",     "path": "Tires", "fmt": { "len": 16, "max": 149.95, "div": 20,               "nullmax": 149.95, "unit": "psi" }, "name": "Front right tire pressure", "suggestedMetric": "frontRightTirePressure"},
+    {"id": "LINCOLN_MAX_TP_FR", "path": "Tires", "fmt": { "len": 16, "max": 150,    "div": 20, "nullmin": 0, "nullmax": 150,    "unit": "psi" }, "name": "Front right tire pressure", "suggestedMetric": "frontRightTirePressure"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2815"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_RRO",     "path": "Tires", "fmt": { "len": 16, "max": 3276, "div": 20,                               "unit": "psi" }, "name": "Rear right outer tire pressure", "suggestedMetric": "rearRightTirePressure"},
-    {"id": "LINCOLN_TP_RR",      "path": "Tires", "fmt": { "len": 16, "max": 255,  "div": 20,                               "unit": "psi" }, "name": "Rear right tire pressure",       "suggestedMetric": "rearRightTirePressure"},
-    {"id": "LINCOLN_MAX_TP_RRO", "path": "Tires", "fmt": { "len": 16, "max": 150,  "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi" }, "name": "Rear right outer tire pressure", "suggestedMetric": "rearRightTirePressure"}
+    {"id": "LINCOLN_TP_RRO",     "path": "Tires", "fmt": { "len": 16, "max": 149.95, "div": 20,               "nullmax": 149.95, "unit": "psi" }, "name": "Rear right outer tire pressure", "suggestedMetric": "rearRightTirePressure"},
+    {"id": "LINCOLN_TP_RR",      "path": "Tires", "fmt": { "len": 16, "max": 3276,   "div": 20,                                  "unit": "psi" }, "name": "Rear right tire pressure",       "suggestedMetric": "rearRightTirePressure"},
+    {"id": "LINCOLN_MAX_TP_RRO", "path": "Tires", "fmt": { "len": 16, "max": 150,    "div": 20, "nullmin": 0, "nullmax": 150,    "unit": "psi" }, "name": "Rear right outer tire pressure", "suggestedMetric": "rearRightTirePressure"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2816"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_RLO",     "path": "Tires", "fmt": { "len": 16, "max": 3276, "div": 20,                               "unit": "psi" }, "name": "Rear left outer tire pressure", "suggestedMetric": "rearLeftTirePressure"},
-    {"id": "LINCOLN_TP_RL",      "path": "Tires", "fmt": { "len": 16, "max": 255,  "div": 20,                               "unit": "psi" }, "name": "Rear left tire pressure",       "suggestedMetric": "rearLeftTirePressure"},
-    {"id": "LINCOLN_MAX_TP_RLO", "path": "Tires", "fmt": { "len": 16, "max": 150,  "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi" }, "name": "Rear left outer tire pressure", "suggestedMetric": "rearLeftTirePressure"}
+    {"id": "LINCOLN_TP_RLO",     "path": "Tires", "fmt": { "len": 16, "max": 149.95, "div": 20,               "nullmax": 149.95, "unit": "psi" }, "name": "Rear left outer tire pressure", "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "LINCOLN_TP_RL",      "path": "Tires", "fmt": { "len": 16, "max": 3276,   "div": 20,                                  "unit": "psi" }, "name": "Rear left tire pressure",       "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "LINCOLN_MAX_TP_RLO", "path": "Tires", "fmt": { "len": 16, "max": 150,    "div": 20, "nullmin": 0, "nullmax": 150,    "unit": "psi" }, "name": "Rear left outer tire pressure", "suggestedMetric": "rearLeftTirePressure"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2817"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_RRI",     "path": "Tires", "fmt": { "len": 16, "max": 3276, "div": 20,                               "unit": "psi" }, "name": "Rear right inner tire pressure"},
-    {"id": "LINCOLN_MAX_TP_RRI", "path": "Tires", "fmt": { "len": 16, "max": 150,  "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi" }, "name": "Tire pressure, rear right inner"}
+    {"id": "LINCOLN_TP_RRI",     "path": "Tires", "fmt": { "len": 16, "max": 149.95, "div": 20,               "nullmax": 149.95, "unit": "psi" }, "name": "Rear right inner tire pressure"},
+    {"id": "LINCOLN_MAX_TP_RRI", "path": "Tires", "fmt": { "len": 16, "max": 150,    "div": 20, "nullmin": 0, "nullmax": 150,    "unit": "psi" }, "name": "Tire pressure, rear right inner"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2818"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_RLI",     "path": "Tires", "fmt": { "len": 16, "max": 3276, "div": 20,                               "unit": "psi" }, "name": "Rear left inner tire pressure"},
-    {"id": "LINCOLN_MAX_TP_RLI", "path": "Tires", "fmt": { "len": 16, "max": 150,  "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi" }, "name": "Tire pressure, rear left inner"}
+    {"id": "LINCOLN_TP_RLI",     "path": "Tires", "fmt": { "len": 16, "max": 149.95, "div": 20,               "nullmax": 149.95, "unit": "psi" }, "name": "Rear left inner tire pressure"},
+    {"id": "LINCOLN_MAX_TP_RLI", "path": "Tires", "fmt": { "len": 16, "max": 150,    "div": 20, "nullmin": 0, "nullmax": 150,    "unit": "psi" }, "name": "Tire pressure, rear left inner"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "401E"}, "freq": 1,
   "signals": [
@@ -146,14 +178,6 @@
   "signals": [
     {"id": "LINCOLN_VEH_BAT_CURRENT", "path": "Battery", "fmt": { "len": 8, "max": 128, "min": -127, "add": -127, "unit": "amps" }, "name": "12V battery current"}
   ]},
-{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "407E"}, "freq": 1,
-  "signals": [
-    {"id": "LINCOLN_EXTERIOR_LIGHT_STATE", "path": "Lights", "name": "Exterior lighting state", "fmt": {"bix": 0, "len": 1, "map": {
-          "0":   { "description": "0", "value": "0" },
-          "216": { "description": "1", "value": "1" }
-        }}
-    }
-  ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4090"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_BAT_CURRENT_726", "path": "Engine", "fmt": { "len": 16, "max": 3584.2375, "min": -511.7, "div": 16, "add": -511.7, "unit": "amps" }, "name": "Battery current"}
@@ -179,7 +203,7 @@
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "4209"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_BAT_CURRENT", "path": "Battery", "fmt": { "len": 24, "max": 4194303.75, "div": 4, "unit": "amps" }, "name": "Battery current, predicted"}
+    {"id": "LINCOLN_BAT_CURRENT", "path": "Battery", "fmt": { "len": 24, "max": 2097151.75, "min": -2097152, "div": 4, "sign": true, "unit": "amps" }, "name": "Battery current, predicted"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "420A"}, "freq": 1,
   "signals": [
@@ -189,31 +213,7 @@
   "signals": [
     {"id": "LINCOLN_VEH_BAT_B_CURRENT", "path": "Battery", "fmt": { "len": 16, "max": 1023.96, "min": -1024, "div": 32, "sign": true, "unit": "amps" }, "name": "Second battery current"}
   ]},
-{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "7151"}, "freq": 4,
-  "signals": [
-    {"id": "LINCOLN_HIGHBEAM_STATUS", "path": "Lights", "fmt": { "len": 16, "max": 2, "unit": "offon" }, "name": "High beam status"}
-  ]},
-{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "C150"}, "freq": 3,
-  "signals": [
-    {"id": "LINCOLN_TAILGATE_OPEN",       "path": "Doors", "fmt": {"bix": 11, "len": 1, "max": 1, "unit": "noyes" }, "name": "Tailgate ajar"},
-    {"id": "LINCOLN_RRD_OPEN",            "path": "Doors", "fmt": {"bix": 12, "len": 1, "max": 1, "unit": "noyes" }, "name": "Rear right door ajar"},
-    {"id": "LINCOLN_RLD_OPEN",            "path": "Doors", "fmt": {"bix": 13, "len": 1, "max": 1, "unit": "noyes" }, "name": "Rear left door ajar"},
-    {"id": "LINCOLN_DRIVER_DOOR_OPEN",    "path": "Doors", "fmt": {"bix": 16, "len": 1, "max": 1, "unit": "noyes" }, "name": "Driver door ajar"},
-    {"id": "LINCOLN_PASSENGER_DOOR_OPEN", "path": "Doors", "fmt": {"bix": 17, "len": 1, "max": 1, "unit": "noyes" }, "name": "Passenger door ajar"}
-  ]},
-{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "C154"}, "freq": 3,
-  "signals": [
-    {"id": "LINCOLN_HOOD_OPEN", "path": "Doors", "fmt": { "len": 1, "max": 1, "unit": "noyes" }, "name": "Hood ajar"}
-  ]},
-{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "C259"}, "freq": 2,
-  "signals": [
-    {"id": "LINCOLN_CENTRAL_LOCK_STATUS", "path": "Doors", "name": "Lock status", "fmt": {"len": 8, "map": {
-          "0": { "description": "Unlocked", "value": "UNLOCKED" },
-          "2": { "description": "Locked",   "value": "LOCKED" }
-        }}
-    }
-  ]},
-{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "DD01"}, "freq": 30,
+{ "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "DD01"}, "freq": 5,
   "signals": [
     {"id": "LINCOLN_ODO_726",     "path": "Trips", "fmt": { "len": 24, "max": 16777215,                      "unit": "kilometers" }, "name": "Odometer, instrument panel", "suggestedMetric": "odometer"},
     {"id": "LINCOLN_MAX_ODO_726", "path": "Trips", "fmt": { "len": 24, "max": 16777215, "nullmax": 16777215, "unit": "kilometers" }, "name": "Odometer, instrument panel", "suggestedMetric": "odometer"}
@@ -243,23 +243,23 @@
   "signals": [
     {"id": "LINCOLN_DCDC_ENABLED", "path": "Battery", "fmt": { "len": 8, "max": 1, "unit": "offon" }, "name": "DC-DC converter"}
   ]},
-{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B00"}, "freq": 3,
+{ "hdr": "760", "dbg": true, "cmd": {"22": "2B00"}, "freq": 3,
   "signals": [
-    {"id": "LINCOLN_PARKING_BRAKE", "path": "Control", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Parking brake state"}
+    {"id": "LINCOLN_PARKING_BRAKE", "path": "Control", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Focus parking brake state"}
   ]},
-{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B06"}, "freq": 0.25,
+{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B06"}, "freq": 0.1,
   "signals": [
     {"id": "LINCOLN_FR_VSS", "path": "Movement", "fmt": { "len": 8, "max": 200, "unit": "kilometersPerHour" }, "name": "Front right wheel speed"}
   ]},
-{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B07"}, "freq": 0.25,
+{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B07"}, "freq": 0.1,
   "signals": [
     {"id": "LINCOLN_FL_VSS", "path": "Movement", "fmt": { "len": 8, "max": 200, "unit": "kilometersPerHour" }, "name": "Front left wheel speed"}
   ]},
-{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B08"}, "freq": 0.25,
+{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B08"}, "freq": 0.1,
   "signals": [
     {"id": "LINCOLN_RR_VSS", "path": "Movement", "fmt": { "len": 8, "max": 200, "unit": "kilometersPerHour" }, "name": "Rear right wheel speed"}
   ]},
-{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B09"}, "freq": 0.25,
+{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B09"}, "freq": 0.1,
   "signals": [
     {"id": "LINCOLN_RL_VSS", "path": "Movement", "fmt": { "len": 8, "max": 200, "unit": "kilometersPerHour" }, "name": "Rear left wheel speed"}
   ]},
@@ -276,7 +276,7 @@
     {"id": "LINCOLN_BRK_FL_P",     "path": "Control", "fmt": { "len": 8,  "max": 255,   "unit": "kilopascal" }, "name": "Brake hydraulic pressure"},
     {"id": "LINCOLN_MAX_BRK_FL_P", "path": "Control", "fmt": { "len": 16, "max": 65535, "unit": "scalar"     }, "name": "Brake hydraulic pressure, raw count"}
   ]},
-{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B11"}, "freq": 0.25,
+{ "hdr": "760", "rax": "768", "dbg": true, "cmd": {"22": "2B11"}, "freq": 0.1,
   "signals": [
     {"id": "LINCOLN_LAT_G", "path": "Movement", "fmt": { "len": 16, "max": 1, "min": -1, "div": 50, "sign": true, "unit": "scalar" }, "name": "Lateral acceleration"}
   ]},
@@ -309,13 +309,13 @@
   "signals": [
     {"id": "LINCOLN_OUTDOOR_T_BCM", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Outdoor temperature, BCM"}
   ]},
+{ "hdr": "764", "dbg": true, "cmd": {"22": "A224"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_CC_TGT_VSS", "path": "Cruise control", "fmt": { "len": 16, "max": 736, "min": -736, "mul": 3.6, "div": 10, "sign": true, "unit": "kilometersPerHour" }, "name": "Target vehicle speed", "description": "The speed of the vehicle ahead of you."}
+  ]},
 { "hdr": "764", "rax": "76C", "dbg": true, "cmd": {"22": "A220"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_FSM_AUTOMATIC", "path": "Engine", "fmt": { "len": 16, "max": 3276, "min": -3276, "div": 10, "sign": true, "unit": "degrees" }, "name": "Forward sensing module automatic alignment offset"}
-  ]},
-{ "hdr": "764", "rax": "76C", "dbg": true, "cmd": {"22": "A224"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_CC_TGT_VSS", "path": "Cruise control", "fmt": { "len": 16, "max": 736, "min": -736, "mul": 3.6, "div": 10, "sign": true, "unit": "kilometersPerHour" }, "name": "Target vehicle speed", "description": "The speed of the vehicle ahead of you."}
   ]},
 { "hdr": "764", "rax": "76C", "dbg": true, "cmd": {"22": "DD01"}, "freq": 30,
   "signals": [
@@ -333,12 +333,12 @@
   ]},
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "1310"}, "freq": 30,
   "signals": [
-    {"id": "LINCOLN_EOT_V2", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Engine oil temperature"}
+    {"id": "LINCOLN_EOT", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Engine oil temperature"}
   ]},
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "1E12"}, "freq": 30,
   "signals": [
     {"id": "LINCOLN_GEAR_V2", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Current gear", "description": "The automatic transmission gear. Numbers aren't yet mapped to named gears."},
-    {"id": "LINCOLN_GEAR_V2", "path": "Transmission", "name": "Current gear, transmission module", "description": "The automatic transmission gear. Numbers aren't yet mapped to named gears.", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR", "path": "Transmission", "name": "Current gear, transmission module", "description": "The automatic transmission gear, as the transmission module reports it.", "fmt": {"len": 8, "map": {
           "1":  { "description": "First gear",   "value": "1" },
           "2":  { "description": "Second gear",  "value": "2" },
           "3":  { "description": "Third gear",   "value": "3" },
@@ -357,13 +357,13 @@
   ]},
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "1E1C"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_TOT_V2", "path": "Transmission", "fmt": { "len": 16, "max": 255,              "div": 16,               "unit": "celsius" }, "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_TOT",    "path": "Transmission", "fmt": { "len": 16, "max": 255,              "div": 16,               "unit": "celsius" }, "name": "Transmission oil temperature"},
     {"id": "LINCOLN_TOT_V2", "path": "Transmission", "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature", "suggestedMetric": "transmissionFluidTemperature"}
   ]},
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "1E23"}, "freq": 30,
   "signals": [
-    {"id": "LINCOLN_GEAR_SHFT_V2", "path": "Engine", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Shift gear"},
-    {"id": "LINCOLN_GEAR_SHFT_V2", "path": "Transmission", "name": "Shift gear", "description": "Selected range. Neutral, reverse and park are mapped; the code driving reports (43) is not yet.", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR_SHFT", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Shift gear"},
+    {"id": "LINCOLN_GEAR_SHFT_V2_7DF", "path": "Transmission", "name": "Shift gear", "description": "Selected range. Neutral, reverse and park are mapped; the code driving reports (43) is not yet.", "fmt": {"len": 8, "map": {
           "50": { "description": "Neutral", "value": "NEUTRAL" },
           "60": { "description": "Reverse", "value": "REVERSE" },
           "70": { "description": "Park",    "value": "PARK" }
@@ -372,108 +372,150 @@
   ]},
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "F42F"}, "freq": 30,
   "signals": [
-    {"id": "LINCOLN_FLI_V2_V2", "path": "Fuel", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Fuel level (alternative)"}
+    {"id": "LINCOLN_FLI_V2", "path": "Fuel", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Fuel level, alternative"}
   ]},
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "F45C"}, "freq": 30,
   "signals": [
     {"id": "LINCOLN_EOP",     "path": "Engine", "fmt": { "len": 8, "max": 255,                         "unit": "scalar"  }, "name": "Engine oil pressure"},
     {"id": "LINCOLN_EOT_7DF", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0301"}, "freq": 0.25,
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0301"}, "freq": 0.25,
   "signals": [
     {"id": "LINCOLN_MAP_V",             "fmt": { "len": 16, "max": 5,                      "div": 1024, "unit": "volts" }, "name": "Manifold absolute pressure sensor voltage", "description": "Typically varies from 1 volt at idle to 5 volts during wide open throttle."},
     {"id": "LINCOLN_[ECU] MAP voltage", "fmt": { "len": 16, "max": 5, "mul": 0.0009765625,              "unit": "volts" }, "name": "Manifold absolute pressure sensor voltage", "description": "Typically varies from 1 volt at idle to 5 volts during wide open throttle."}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0307"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_LPFP_DUTY",     "fmt":            {      "len": 16, "max": 100,             "mul": 0.0030517578,                         "unit": "percent" },                "name": "Low pressure fuel pump commanded duty cycle"},
+    {"id": "LINCOLN_MAX_LPFP_DUTY", "path": "Engine", "fmt": {          "len": 16,  "max": 100,                      "mul": 25, "div": 8192,                   "unit": "percent" },                                                     "name": "Fuel pump duty cycle, low pressure"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "030F"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_CL",                     "fmt": { "len": 16, "max": 1.9999, "mul": 0.0000305176, "unit": "scalar" }, "name": "Commanded lambda", "description": "The ratio of of oxygen in the combustion chamber compared to the amount that should have been present for ideal combustion."},
+    {"id": "LINCOLN_[ECU] Commanded lambda", "fmt": { "len": 16, "max": 5,      "mul": 0.0000305176, "unit": "scalar" }, "name": "Commanded lambda", "description": "The ratio of of oxygen in the combustion chamber compared to the amount that should have been present for ideal combustion."}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0316"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_INT_DUTY", "fmt": { "len": 16, "max": 100, "mul": 0.0030517578, "unit": "percent" }, "name": "Variable cam timing intake camshaft solenoid duty cycle"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0317"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_EXH_DUTY", "fmt": { "len": 16, "max": 100, "mul": 0.0030517578, "unit": "percent" }, "name": "Variable cam timing exhaust camshaft solenoid duty cycle"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0318"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_INT_ACT", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable cam timing intake camshaft actual"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0319"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_EXH_ACT", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable cam timing exhaust camshaft actual"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "031A"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_INT_ERR", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable cam timing intake camshaft error"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "031B"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_EXH_ERR", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable cam timing exhaust camshaft error"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0324"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_HPFP_V",     "fmt":            {      "len": 16, "max": 5,            "mul": 0.0048875855,                        "unit": "volts" },              "name": "High pressure fuel rail sensor voltage"},
+    {"id": "LINCOLN_MAX_HPFP_V", "path": "Engine", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1023,                 "unit": "volts" },                                                "name": "Fuel rail sensor voltage, high pressure"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "032B"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_ACC_POS",                          "fmt": { "len": 8, "max": 100,             "div": 2, "unit": "percent" }, "name": "Accelerator pedal position"},
+    {"id": "LINCOLN_[ECU] Accelerator pedal position", "fmt": { "len": 8, "max": 100, "mul": 0.5,           "unit": "percent" }, "name": "Accelerator Pedal Position"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0338"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_ETC_TRIM_LEARNED", "fmt": { "len": 16, "max": 63.9, "min": -64, "div": 512, "sign": true, "unit": "degrees" }, "name": "Electronic throttle control learned trim angle"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "033C"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_TIP_V",     "fmt":            {      "len": 16, "max": 5,            "mul": 0.0048828125,                        "unit": "volts" },              "name": "Throttle inlet pressure sensor voltage"},
+    {"id": "LINCOLN_MAX_TIP_V", "path": "Engine", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1024,                 "unit": "volts" },                                                "name": "Throttle inlet pressure sensor voltage"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "033E"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_TIP_ABS",     "fmt":            {      "len": 16, "max": 60,            "mul": 0.0011064263,                          "unit": "psi" },            "name": "Throttle inlet pressure absolute"},
+    {"id": "LINCOLN_MAX_TIP_ABS", "path": "Engine", "fmt": {          "len": 16, "max": 60,                      "mul": 37, "div": 33441,               "unit": "psi" },                                          "name": "Throttle inlet pressure"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0353"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_BARO", "fmt": { "len": 16, "max": 20, "min": 8, "mul": 0.0362553791, "unit": "psi" }, "name": "Barometric pressure"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "035A"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_BARO_V",     "fmt":            {      "len": 16, "max": 5,            "mul": 0.0048875855,                        "unit": "volts" },              "name": "Barometric pressure sensor voltage"},
+    {"id": "LINCOLN_MAX_BARO_V", "path": "Engine", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1023,                 "unit": "volts" },                                            "name": "Barometric pressure sensor voltage"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "035F"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_RO2_V",           "fmt": { "len": 16, "max": 1,                      "div": 1024, "unit": "volts" }, "name": "Rear O2 voltage"},
+    {"id": "LINCOLN_[ECU] Rear O2 V", "fmt": { "len": 16, "max": 1, "mul": 0.0009765625,              "unit": "volts" }, "name": "Rear O2 voltage"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "038E"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_EVAP_V",   "fmt":            {      "len": 16, "max": 65.535,               "div": 1000, "unit": "volts" },               "name": "Evaporative vapor pressure sensor voltage"},
+    {"id": "LINCOLN_EVAP_RAW", "path": "Engine", "fmt": {          "len": 16,     "max": 65535,                              "unit": "scalar" },                                                   "name": "Evaporative pressure sensor, raw count"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "038F"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_ECT",     "fmt":            {      "len": 16, "max": 148.889, "min": -40,              "div": 64,            "sign": true,               "unit": "celsius" },                "name": "Engine coolant temperature"},
+    {"id": "LINCOLN_MAX_ECT", "path": "Engine", "fmt": {          "len": 16,      "max": 511, "min": -512,            "div": 64,               "sign": true,                   "unit": "celsius" },                                    "name": "Coolant temperature"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "0393"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_AC_P",              "fmt": { "len": 16, "max": 1000,              "mul": 0.2900754962, "unit": "psi" }, "name": "Air conditioning compressor pressure"},
+    {"id": "LINCOLN_[ECU] AC Pressure", "fmt": { "len": 16, "max": 1000, "min": -100, "mul": 0.2900754962, "unit": "psi" }, "name": "Air conditioning compressor pressure"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03BA"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_AAT_V",     "fmt":             {      "len": 16, "max": 5,            "mul": 0.0048875855,                        "unit": "volts" },              "name": "Ambient air temperature sensor voltage"},
+    {"id": "LINCOLN_MAX_AAT_V", "path": "Climate", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1023,                 "unit": "volts" },                                                "name": "Ambient temperature sensor voltage"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03BB"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_EXH_DES", "fmt": { "len": 16, "max": 50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable cam timing exhaust cam desired"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03BC"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_VCT_INT_DES", "fmt": { "len": 16, "max": 40, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable cam timing intake cam desired"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03BD"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_CL_LC", "fmt": { "len": 16, "max": 3.99, "min": -4, "div": 8192, "sign": true, "unit": "scalar" }, "name": "Closed loop lambda correction"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03CA"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_MCT", "fmt": { "len": 8, "max": 148.889, "unit": "celsius" }, "name": "Manifold charge temperature"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03DC"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_HPFP_DES",     "fmt":            {      "len": 16, "max": 3500,                "mul": 1.4503773969,            "unit": "psi" },                   "name": "High pressure fuel pressure desired"},
+    {"id": "LINCOLN_MAX_HPFP_DES", "path": "Engine", "fmt": {          "len": 16,   "max": 655350,                      "mul": 10,               "unit": "kilopascal" },                                             "name": "Fuel pressure, high desired"}
+  ]},
+{ "hdr": "7E0", "dbg": true, "cmd": {"22": "03E8"}, "freq": 0.25,
+  "signals": [
+    {"id": "LINCOLN_OAR", "fmt": { "len": 16, "max": 1, "min": -1, "div": 16384, "sign": true, "unit": "scalar" }, "name": "Octane adjust ratio"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0304"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_CMD_GEN_V", "path": "Battery", "fmt": { "len": 16, "max": 16, "mul": 0.000488, "unit": "volts" }, "name": "Commanded generator voltage"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0307"}, "freq": 0.25,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0334"}, "freq": 2,
   "signals": [
-    {"id": "LINCOLN_LPFP_DUTY",     "fmt":            {      "len": 16, "max": 100,             "mul": 0.0030517578,                         "unit": "percent" },                "name": "Low pressure fuel pump commanded duty cycle"},
-    {"id": "LINCOLN_MAX_LPFP_DUTY", "path": "Engine", "fmt": {          "len": 16,  "max": 100,                      "mul": 25, "div": 8192,                   "unit": "percent" },                                                     "name": "Fuel pump duty cycle, low pressure"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "030F"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_CL",                     "fmt": { "len": 16, "max": 1.9999, "mul": 0.0000305176, "unit": "scalar" }, "name": "Commanded lambda", "description": "The ratio of of oxygen in the combustion chamber compared to the amount that should have been present for ideal combustion."},
-    {"id": "LINCOLN_[ECU] Commanded lambda", "fmt": { "len": 16, "max": 5,      "mul": 0.0000305176, "unit": "scalar" }, "name": "Commanded lambda", "description": "The ratio of of oxygen in the combustion chamber compared to the amount that should have been present for ideal combustion."}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0316"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_INT_DUTY", "fmt": { "len": 16, "max": 100, "mul": 0.0030517578, "unit": "percent" }, "name": "Variable camshaft timing intake camshaft solenoid duty cycle"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0317"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_EXH_DUTY", "fmt": { "len": 16, "max": 100, "mul": 0.0030517578, "unit": "percent" }, "name": "Variable camshaft timing exhaust camshaft solenoid duty cycle"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0318"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_INT_ACT",             "fmt": { "len": 16, "max": 0,              "div": 16,               "unit": "degrees" }, "name": "Variable camshaft timing intake camshaft actual"},
-    {"id": "LINCOLN_[ECU] VCT intake actual", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "VCT intake camshaft actual"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0319"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_EXH_ACT",              "fmt": { "len": 16, "max": 50,             "div": 16,               "unit": "degrees" }, "name": "Variable camshaft timing exhaust camshaft actual"},
-    {"id": "LINCOLN_[ECU] VCT exhaust actual", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "VCT exhaust camshaft actual"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "031A"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_INT_ERR", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable camshaft timing intake camshaft error"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "031B"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_EXH_ERR",             "fmt": { "len": 16, "max": 50,             "div": 16,               "unit": "degrees" }, "name": "Variable camshaft timing exhaust camshaft error"},
-    {"id": "LINCOLN_[ECU] VCT exhaust error", "fmt": { "len": 16, "max": 50, "min": -50, "div": 16, "sign": true, "unit": "degrees" }, "name": "VCT exhaust camshaft error"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0324"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_HPFP_V",     "fmt":            {      "len": 16, "max": 5,            "mul": 0.0048875855,                        "unit": "volts" },              "name": "High pressure fuel rail sensor voltage"},
-    {"id": "LINCOLN_MAX_HPFP_V", "path": "Engine", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1023,                 "unit": "volts" },                                                "name": "Fuel rail sensor voltage, high pressure"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "032B"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_ACC_POS",                          "fmt": { "len": 8, "max": 100,             "div": 2, "unit": "percent" }, "name": "Accelerator pedal position"},
-    {"id": "LINCOLN_[ECU] Accelerator pedal position", "fmt": { "len": 8, "max": 100, "mul": 0.5,           "unit": "percent" }, "name": "Accelerator Pedal Position"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0334"}, "freq": 5,
-  "signals": [
-    {"id": "LINCOLN_PCM_CYL_HEAD_T_CORR", "path": "Engine", "fmt": { "len": 16, "max": 511, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Cylinder head temperature"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0338"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_ETC_TRIM_LEARNED", "fmt": { "len": 16, "max": 63.9, "min": -64, "div": 512, "sign": true, "unit": "degrees" }, "name": "Electronic throttle control learned trim angle"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "033C"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_TIP_V",     "fmt":            {      "len": 16, "max": 5,            "mul": 0.0048828125,                        "unit": "volts" },              "name": "Throttle inlet pressure sensor voltage"},
-    {"id": "LINCOLN_MAX_TIP_V", "path": "Engine", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1024,                 "unit": "volts" },                                                "name": "Throttle inlet pressure sensor voltage"}
+    {"id": "LINCOLN_PCM_CYL_HEAD_T_CORR", "path": "Engine", "fmt": { "len": 16, "max": 511.9843, "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Cylinder head temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "033D"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_MASS_AIRFLOW_SENS", "path": "Engine", "fmt": { "len": 16, "max": 16383, "div": 4, "unit": "hertz" }, "name": "Mass airflow sensor frequency"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "033E"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_TIP_ABS",     "fmt":            {      "len": 16, "max": 60,            "mul": 0.0011064263,                          "unit": "psi" },            "name": "Throttle inlet pressure absolute"},
-    {"id": "LINCOLN_MAX_TIP_ABS", "path": "Engine", "fmt": {          "len": 16, "max": 60,                      "mul": 37, "div": 33441,               "unit": "psi" },                                          "name": "Throttle inlet pressure"}
-  ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0345"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_PCM_MISF_EVENTS_LATEST_CYC", "path": "Engine", "fmt": { "len": 32, "max": 4294967295, "unit": "scalar" }, "name": "Misfire events, latest cycle"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0353"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_BARO", "fmt": { "len": 16, "max": 20, "min": 8, "mul": 0.0362553791, "unit": "psi" }, "name": "Barometric pressure"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "035A"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_BARO_V",     "fmt":            {      "len": 16, "max": 5,            "mul": 0.0048875855,                        "unit": "volts" },              "name": "Barometric pressure sensor voltage"},
-    {"id": "LINCOLN_MAX_BARO_V", "path": "Engine", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1023,                 "unit": "volts" },                                            "name": "Barometric pressure sensor voltage"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "035F"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_RO2_V",           "fmt": { "len": 16, "max": 1,                      "div": 1024, "unit": "volts" }, "name": "Rear O2 voltage"},
-    {"id": "LINCOLN_[ECU] Rear O2 V", "fmt": { "len": 16, "max": 1, "mul": 0.0009765625,              "unit": "volts" }, "name": "Rear O2 voltage"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0370"}, "freq": 1,
   "signals": [
@@ -485,42 +527,27 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0382"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL1_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.98, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 1"}
+    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL1_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.9843, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 1"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0388"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL2_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.98, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 2"}
+    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL2_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.9843, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 2"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038A"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL3_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.98, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 3"}
+    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL3_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.9843, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 3"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038B"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL4_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.98, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 4"}
+    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL4_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.9843, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 4"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038C"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL5_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.98, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 5"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038E"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_EVAP_V",   "fmt":            {      "len": 16, "max": 65.535,               "div": 1000, "unit": "volts" },               "name": "Evaporative vapor pressure sensor voltage"},
-    {"id": "LINCOLN_EVAP_RAW", "path": "Engine", "fmt": {          "len": 16,     "max": 65535,                              "unit": "scalar" },                                                   "name": "Evaporative pressure sensor, raw count"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "038F"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_ECT",       "fmt": { "len": 16, "max": 511,     "min": -512, "div": 64, "sign": true, "unit": "celsius" }, "name": "Engine coolant temperature"},
-    {"id": "LINCOLN_[ECU] ECT", "fmt": { "len": 16, "max": 148.889, "min": -40,  "div": 64, "sign": true, "unit": "celsius" }, "name": "Engine coolant temperature"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0393"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_AC_P",              "fmt": { "len": 16, "max": 1000,              "mul": 0.2900754962, "unit": "psi" }, "name": "Air conditioning compressor pressure"},
-    {"id": "LINCOLN_[ECU] AC Pressure", "fmt": { "len": 16, "max": 1000, "min": -100, "mul": 0.2900754962, "unit": "psi" }, "name": "Air conditioning compressor pressure"}
+    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL5_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.9843, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 5"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0398"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL6_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.98, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 6"}
+    {"id": "LINCOLN_PCM_MISF_ACCEL_CYL6_NORM", "path": "Engine", "fmt": { "len": 8, "max": 1.9843, "min": -2, "div": 64, "sign": true, "unit": "scalar" }, "name": "Misfire acceleration, cylinder 6"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03AF"}, "freq": 0.25,
   "signals": [
@@ -530,26 +557,6 @@
   "signals": [
     {"id": "LINCOLN_FAN_SPD_DES", "path": "Movement", "fmt": { "len": 16, "max": 100, "mul": 40, "div": 13107, "unit": "percent" }, "name": "Fan speed, desired"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03BA"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_AAT_V",     "fmt":             {      "len": 16, "max": 5,            "mul": 0.0048875855,                        "unit": "volts" },              "name": "Ambient air temperature sensor voltage"},
-    {"id": "LINCOLN_MAX_AAT_V", "path": "Climate", "fmt": {          "len": 16, "max": 5,                      "mul": 5, "div": 1023,                 "unit": "volts" },                                                "name": "Ambient temperature sensor voltage"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03BB"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_EXH_DES",       "fmt": { "len": 16, "max": 2047, "min": -2047, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable camshaft timing exhaust cam desired"},
-    {"id": "LINCOLN_[ECU] VCT Exh Des", "fmt": { "len": 16, "max": 50,                 "div": 16, "sign": true, "unit": "degrees" }, "name": "VCT exhaust cam desired"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03BC"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_VCT_INT_DES",       "fmt": { "len": 16, "max": 2047, "min": -2047, "div": 16, "sign": true, "unit": "degrees" }, "name": "Variable camshaft timing intake cam desired"},
-    {"id": "LINCOLN_[ECU] VCT Int Des", "fmt": { "len": 16, "max": 40,   "min": -50,   "div": 16, "sign": true, "unit": "degrees" }, "name": "VCT intake cam desired"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03BD"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_CL_LC",                "fmt": { "len": 16, "max": 3.9,  "min": -4, "div": 8192, "sign": true, "unit": "scalar" }, "name": "Closed loop lambda correction"},
-    {"id": "LINCOLN_[ECU] CL Lambda Corr", "fmt": { "len": 16, "max": 3.99, "min": -4, "div": 8192, "sign": true, "unit": "scalar" }, "name": "Closed loop lambda correction"}
-  ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03C0"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_MIS_MON_STAT", "path": "Engine", "fmt": { "len": 1, "max": 1, "unit": "offon" }, "name": "Misfire monitor status"}
@@ -558,23 +565,9 @@
   "signals": [
     {"id": "LINCOLN_FUEL_RAIL_P_CTRL", "path": "Fuel", "fmt": { "len": 8, "max": 127, "div": 2, "unit": "percent" }, "name": "Fuel rail pressure control"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03CA"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_MCT", "fmt": { "len": 8, "max": 148.889, "unit": "celsius" }, "name": "Manifold charge temperature"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03DC"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_HPFP_DES",     "fmt":            {      "len": 16, "max": 3500,                "mul": 1.4503773969,            "unit": "psi" },                   "name": "High pressure fuel pressure desired"},
-    {"id": "LINCOLN_MAX_HPFP_DES", "path": "Engine", "fmt": {          "len": 16,   "max": 655350,                      "mul": 10,               "unit": "kilopascal" },                                             "name": "Fuel pressure, high desired"}
-  ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03E3"}, "freq": 1,
   "signals": [
     {"id": "LINCOLN_PF_DIFF_P_FEEDBACK_V", "path": "Battery", "fmt": { "len": 16, "max": 32.01, "min": -32.01, "mul": 977, "div": 1000000, "sign": true, "unit": "volts" }, "name": "PF differential pressure feedback EGR sensor voltage"}
-  ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03E8"}, "freq": 0.25,
-  "signals": [
-    {"id": "LINCOLN_OAR",       "fmt": { "len": 16, "max": 1,            "div": 16384, "sign": true, "unit": "scalar" }, "name": "Octane adjust ratio"},
-    {"id": "LINCOLN_[ECU] OAR", "fmt": { "len": 16, "max": 1, "min": -1, "div": 16384, "sign": true, "unit": "scalar" }, "name": "Octane adjust ratio"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03EC"}, "freq": 0.25,
   "signals": [
@@ -637,7 +630,7 @@
   "signals": [
     {"id": "LINCOLN_CAT_SENS_V", "path": "Engine", "fmt": { "len": 16, "max": 5, "div": 1024, "sign": true, "unit": "volts" }, "name": "Charge air temperature sensor voltage"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0461"}, "freq": 5,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0461"}, "freq": 2,
   "signals": [
     {"id": "LINCOLN_CAT", "path": "Engine", "fmt": { "len": 16, "max": 189, "min": -40, "div": 64, "add": -40, "sign": true, "unit": "celsius" }, "name": "Charge air temperature"}
   ]},
@@ -737,7 +730,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0543"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_EGR_T_7E0", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
+    {"id": "LINCOLN_EGR_T_7E0_7E0", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0548"}, "freq": 1,
   "signals": [
@@ -767,7 +760,7 @@
   "signals": [
     {"id": "LINCOLN_DPF_SOOT_LOAD", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "percent" }, "name": "Diesel particulate filter soot load, variant 2"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "057D"}, "freq": 5,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "057D"}, "freq": 2,
   "signals": [
     {"id": "LINCOLN_AAT_ALT", "path": "Climate", "fmt": { "len": 8, "max": 87.5, "min": -40, "div": 2, "add": -40, "unit": "celsius" }, "name": "Ambient temperature, alternate"}
   ]},
@@ -1008,11 +1001,15 @@
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1310"}, "freq": 5,
   "signals": [
     {"id": "LINCOLN_EOT_7E0", "path": "Engine", "fmt": { "len": 16, "max": 615, "min": -40, "div": 100, "add": -40, "unit": "celsius" }, "name": "Engine oil temperature"},
-    {"id": "LINCOLN_EOT",     "path": "Engine", "fmt": { "len": 16, "max": 615, "min": -40, "div": 100, "add": -40, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
+    {"id": "LINCOLN_EOT_V2",  "path": "Engine", "fmt": { "len": 16, "max": 615, "min": -40, "div": 100, "add": -40, "unit": "celsius" }, "name": "Engine oil temperature", "suggestedMetric": "engineOilTemperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1313"}, "freq": 5,
   "signals": [
     {"id": "LINCOLN_EOT_VAR_2", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Engine oil temperature, variant 2"}
+  ]},
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1410"}, "freq": 1,
+  "signals": [
+    {"id": "LINCOLN_FUEL_WIDTH", "path": "Fuel", "fmt": { "len": 16, "max": 524, "div": 125, "unit": "milliseconds" }, "name": "Fuel pulse width"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dout": "00", "dbg": true, "cmd": {"22": "1411"}, "freq": 1,
   "signals": [
@@ -1120,7 +1117,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "16C1"}, "freq": 30,
   "signals": [
-    {"id": "LINCOLN_FLI_7E0", "path": "Fuel", "fmt": { "len": 16, "max": 200, "mul": 0.0030518509, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"}
+    {"id": "LINCOLN_FLI_7E0_V2", "path": "Fuel", "fmt": { "len": 16, "max": 200, "mul": 0.0030518509, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "16E0"}, "freq": 5,
   "signals": [
@@ -1136,7 +1133,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E12"}, "freq": 2,
   "signals": [
-    {"id": "LINCOLN_GEAR", "path": "Engine", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR_7E0", "path": "Transmission", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
           "1":  { "description": "First gear",   "value": "1" },
           "2":  { "description": "Second gear",  "value": "2" },
           "3":  { "description": "Third gear",   "value": "3" },
@@ -1176,7 +1173,8 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E1C"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_TOT", "path": "Engine", "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature"}
+    {"id": "LINCOLN_TOT_7E0", "path": "Engine",       "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_TOT_V2",  "path": "Transmission", "fmt": { "len": 16, "max": 255, "min": -40,  "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature", "suggestedMetric": "transmissionFluidTemperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E1F"}, "freq": 1,
   "signals": [
@@ -1184,7 +1182,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E23"}, "freq": 2,
   "signals": [
-    {"id": "LINCOLN_GEAR_SHFT", "path": "Engine", "name": "Shift gear", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR_SHFT_7E0", "path": "Transmission", "name": "Shift gear", "fmt": {"len": 8, "map": {
           "10": { "description": "Manual",  "value": "MANUAL" },
           "46": { "description": "Drive",   "value": "DRIVE" },
           "50": { "description": "Neutral", "value": "NEUTRAL" },
@@ -1278,7 +1276,7 @@
     {"id": "LINCOLN_VSS",     "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle speed", "suggestedMetric": "speed"},
     {"id": "LINCOLN_MAX_VSS", "path": "Movement", "fmt": { "len": 8, "max": 255, "unit": "kilometersPerHour" }, "name": "Vehicle speed"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F40F"}, "freq": 5,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F40F"}, "freq": 2,
   "signals": [
     {"id": "LINCOLN_IAT_ALT2", "path": "Engine", "fmt": { "len": 8, "max": 215, "min": -40, "add": -40, "unit": "celsius" }, "name": "Intake temperature, alternate"}
   ]},
@@ -1296,7 +1294,8 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F42F"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_FLI", "path": "Fuel", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"}
+    {"id": "LINCOLN_FLI_7E0", "path": "Fuel", "fmt": { "len": 8, "max": 100, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"},
+    {"id": "LINCOLN_FLI",     "path": "Fuel", "fmt": { "len": 8, "max": 255, "mul": 100, "div": 255, "unit": "percent" }, "name": "Fuel level", "suggestedMetric": "fuelTankLevel"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F430"}, "freq": 60,
   "signals": [
@@ -1304,8 +1303,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F431"}, "freq": 60,
   "signals": [
-    {"id": "LINCOLN_DIST_DTC_CLR",     "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance since DTC clear", "suggestedMetric": "distanceSinceDTCsCleared"},
-    {"id": "LINCOLN_MAX_DIST_DTC_CLR", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance since DTC clear"}
+    {"id": "LINCOLN_DIST_DTC_CLR", "path": "Engine", "fmt": { "len": 16, "max": 65535, "unit": "kilometers" }, "name": "Distance since DTC clear"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F434"}, "freq": 1,
   "signals": [
@@ -1346,7 +1344,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F46B"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_EGR_T_7E0_7E0", "path": "Engine", "fmt": { "len": 16, "max": 6513, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
+    {"id": "LINCOLN_EGR_T_7E0", "path": "Engine", "fmt": { "len": 16, "max": 6513, "min": -40, "div": 10, "add": -40, "unit": "celsius" }, "name": "Exhaust gas recirculation temperature"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F478"}, "freq": 5,
   "signals": [

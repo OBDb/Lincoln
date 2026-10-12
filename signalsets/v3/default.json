@@ -645,7 +645,8 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0461"}, "freq": 2,
   "signals": [
-    {"id": "LINCOLN_CAT", "path": "Engine", "fmt": { "len": 16, "max": 189, "min": -40, "div": 64, "add": -40, "sign": true, "unit": "celsius" }, "name": "Charge air temperature"}
+    {"id": "LINCOLN_CAT",         "path": "Engine", "fmt": { "len": 16, "max": 189, "min": -40, "div": 64, "add": -40, "sign": true,                 "unit": "celsius" }, "name": "Charge air temperature"},
+    {"id": "LINCOLN_CHG_AIR_T_2", "path": "Engine", "fmt": { "len": 16, "max": 189, "min": -40, "div": 64, "add": -40, "sign": true, "nullmin": -40, "unit": "celsius" }, "name": "Charge air temperature 2"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0462"}, "freq": 0.25,
   "signals": [

@@ -1399,6 +1399,10 @@
   "signals": [
     {"id": "LINCOLN_TRANS_FLUID_FLUID", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Transmission fluid fluid quality"}
   ]},
+{ "hdr": "7E1", "rax": "7E9", "dbg": true, "cmd": {"22": "1E1C"}, "freq": 5,
+  "signals": [
+    {"id": "LINCOLN_ATF_T_VAR_4", "path": "Transmission", "fmt": { "len": 16, "max": 4095, "div": 16, "unit": "celsius" }, "name": "Transmission fluid temperature, variant 4"}
+  ]},
 { "hdr": "7E1", "rax": "7E9", "dbg": true, "cmd": {"22": "1E1F"}, "freq": 0.25,
   "signals": [
     {"id": "LINCOLN_GEAR_7E1", "path": "Transmission", "fmt": { "len": 16, "max": 2047, "min": -2048, "div": 16, "sign": true, "unit": "scalar" }, "name": "Gear"}

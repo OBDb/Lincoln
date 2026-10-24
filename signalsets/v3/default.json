@@ -378,8 +378,9 @@
   ]},
 { "hdr": "7DF", "rax": "7E9", "dbg": true, "cmd": {"22": "1E1C"}, "freq": 1,
   "signals": [
-    {"id": "LINCOLN_TOT_V2", "path": "Transmission", "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature", "suggestedMetric": "transmissionFluidTemperature"},
-    {"id": "LINCOLN_TOT_V2", "path": "Transmission", "fmt": { "len": 16, "max": 255,              "div": 16,               "unit": "celsius" }, "name": "Transmission oil temperature"}
+    {"id": "LINCOLN_TOT_V2",      "path": "Transmission", "fmt": { "len": 16, "max": 500,   "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature",            "suggestedMetric": "transmissionFluidTemperature"},
+    {"id": "LINCOLN_TOT_V2",      "path": "Transmission", "fmt": { "len": 16, "max": 255,                "div": 16,               "unit": "celsius" }, "name": "Transmission oil temperature"},
+    {"id": "LINCOLN_TOT_7DF_RAW", "path": "Transmission", "fmt": { "len": 16, "max": 65535,                                       "unit": "scalar"  }, "name": "Transmission oil temperature, raw count"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "0301"}, "freq": 0.25,
   "signals": [

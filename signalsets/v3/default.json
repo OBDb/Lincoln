@@ -341,6 +341,20 @@
 { "hdr": "7DF", "dbg": true, "cmd": {"22": "1E23"}, "freq": 30,
   "signals": [
     {"id": "LINCOLN_GEAR_SHFT_V2", "path": "Transmission", "fmt": { "len": 8, "max": 255, "unit": "scalar" }, "name": "Shift gear"},
+    {"id": "LINCOLN_GEAR_SHFT_V2", "path": "Transmission", "name": "Shift gear", "suggestedMetric": "gearSelector", "fmt": {"len": 8, "map": {
+          "10":  { "description": "Manual",  "value": "MANUAL" },
+          "20":  { "description": "Low",     "value": "LOW" },
+          "40":  { "description": "Drive",   "value": "DRIVE" },
+          "46":  { "description": "Drive",   "value": "DRIVE" },
+          "50":  { "description": "Neutral", "value": "NEUTRAL" },
+          "60":  { "description": "Reverse", "value": "REVERSE" },
+          "70":  { "description": "Park",    "value": "PARK" },
+          "100": { "description": "Park",    "value": "PARK" },
+          "101": { "description": "Reverse", "value": "REVERSE" },
+          "102": { "description": "Neutral", "value": "NEUTRAL" },
+          "103": { "description": "Drive",   "value": "DRIVE" }
+        }}
+    },
     {"id": "LINCOLN_GEAR_SHFT_V2_7DF", "path": "Transmission", "name": "Shift gear", "description": "Selected range. Neutral, reverse and park are mapped; the code driving reports (43) is not yet.", "fmt": {"len": 8, "map": {
           "50": { "description": "Neutral", "value": "NEUTRAL" },
           "60": { "description": "Reverse", "value": "REVERSE" },
@@ -1147,9 +1161,22 @@
   "signals": [
     {"id": "LINCOLN_CMD_GEN_DUTY", "path": "Engine", "fmt": { "len": 16, "max": 100, "mul": 0.003052, "unit": "percent" }, "name": "Commanded generator duty"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E12"}, "freq": 2,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E12"}, "freq": 0.25,
   "signals": [
-    {"id": "LINCOLN_GEAR", "path": "Transmission", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
+    {"id": "LINCOLN_GEAR", "path": "Transmission", "name": "Current gear", "description": "The automatic transmission gear.", "suggestedMetric": "gear", "fmt": {"len": 8, "map": {
+          "1":  { "description": "First gear",   "value": "1" },
+          "2":  { "description": "Second gear",  "value": "2" },
+          "3":  { "description": "Third gear",   "value": "3" },
+          "4":  { "description": "Fourth gear",  "value": "4" },
+          "5":  { "description": "Fifth gear",   "value": "5" },
+          "6":  { "description": "Sixth gear",   "value": "6" },
+          "7":  { "description": "Seventh gear", "value": "7" },
+          "8":  { "description": "Eighth gear",  "value": "8" },
+          "9":  { "description": "Ninth gear",   "value": "9" },
+          "10": { "description": "Tenth gear",   "value": "10" }
+        }}
+    },
+    {"id": "LINCOLN_MAX_GEAR", "path": "Transmission", "name": "Current gear", "description": "The automatic transmission gear.", "fmt": {"len": 8, "map": {
           "1":  { "description": "First gear",   "value": "1" },
           "2":  { "description": "Second gear",  "value": "2" },
           "3":  { "description": "Third gear",   "value": "3" },
@@ -1192,18 +1219,38 @@
     {"id": "LINCOLN_TOT_7E0", "path": "Engine",       "fmt": { "len": 16, "max": 500, "min": -500, "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature"},
     {"id": "LINCOLN_TOT",     "path": "Transmission", "fmt": { "len": 16, "max": 255, "min": -40,  "div": 16, "sign": true, "unit": "celsius" }, "name": "Transmission oil temperature", "suggestedMetric": "transmissionFluidTemperature"}
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E1F"}, "freq": 1,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E1F"}, "freq": 0.25,
   "signals": [
-    {"id": "LINCOLN_GEAR_ENG", "path": "Transmission", "fmt": { "len": 8, "max": 6, "unit": "scalar" }, "name": "Gear, engaged"}
+    {"id": "LINCOLN_MAX_GEAR_ENG", "path": "Transmission", "fmt": { "len": 8, "max": 6, "unit": "scalar" }, "name": "Gear, engaged"},
+    {"id": "LINCOLN_GEAR_ENG", "path": "Transmission", "name": "Gear, engaged", "suggestedMetric": "gear", "fmt": {"len": 8, "map": {
+          "1":  { "description": "First gear",   "value": "1" },
+          "2":  { "description": "Second gear",  "value": "2" },
+          "3":  { "description": "Third gear",   "value": "3" },
+          "4":  { "description": "Fourth gear",  "value": "4" },
+          "5":  { "description": "Fifth gear",   "value": "5" },
+          "6":  { "description": "Sixth gear",   "value": "6" },
+          "7":  { "description": "Seventh gear", "value": "7" },
+          "8":  { "description": "Eighth gear",  "value": "8" },
+          "9":  { "description": "Ninth gear",   "value": "9" },
+          "10": { "description": "Tenth gear",   "value": "10" },
+          "70": { "description": "Park",         "value": "PARK" }
+        }}
+    }
   ]},
-{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E23"}, "freq": 2,
+{ "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "1E23"}, "freq": 0.25,
   "signals": [
-    {"id": "LINCOLN_GEAR_SHFT", "path": "Transmission", "name": "Shift gear", "fmt": {"len": 8, "map": {
-          "10": { "description": "Manual",  "value": "MANUAL" },
-          "46": { "description": "Drive",   "value": "DRIVE" },
-          "50": { "description": "Neutral", "value": "NEUTRAL" },
-          "60": { "description": "Reverse", "value": "REVERSE" },
-          "70": { "description": "Park",    "value": "PARK" }
+    {"id": "LINCOLN_GEAR_SHFT", "path": "Transmission", "name": "Shift gear", "suggestedMetric": "gearSelector", "fmt": {"len": 8, "map": {
+          "10":  { "description": "Manual",  "value": "MANUAL" },
+          "20":  { "description": "Low",     "value": "LOW" },
+          "40":  { "description": "Drive",   "value": "DRIVE" },
+          "46":  { "description": "Drive",   "value": "DRIVE" },
+          "50":  { "description": "Neutral", "value": "NEUTRAL" },
+          "60":  { "description": "Reverse", "value": "REVERSE" },
+          "70":  { "description": "Park",    "value": "PARK" },
+          "100": { "description": "Park",    "value": "PARK" },
+          "101": { "description": "Reverse", "value": "REVERSE" },
+          "102": { "description": "Neutral", "value": "NEUTRAL" },
+          "103": { "description": "Drive",   "value": "DRIVE" }
         }}
     }
   ]},

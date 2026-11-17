@@ -76,8 +76,7 @@
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "280B"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TYRE_T",     "path": "Tires", "fmt": {"bix": 48, "len": 8, "max": 215, "min": -40, "add": -40, "nullmax": 215, "unit": "celsius" }, "name": "Tire temperature"},
-    {"id": "LINCOLN_MAX_TYRE_T", "path": "Tires", "fmt": {"bix": 48, "len": 8, "max": 215, "min": -40, "add": -40,                 "unit": "celsius" }, "name": "Tire temperature"}
+    {"id": "LINCOLN_TYRE_T", "path": "Tires", "fmt": {"bix": 48, "len": 8, "max": 215, "min": -40, "add": -40, "nullmax": 215, "unit": "celsius" }, "name": "Tire temperature"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2813"}, "freq": 5,
   "signals": [
@@ -103,13 +102,13 @@
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2817"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_RRI",     "path": "Tires", "fmt": { "len": 16, "max": 3276,  "div": 20,                               "unit": "psi"    }, "name": "Rear right inner tire pressure",      "suggestedMetric": "rearRightTirePressure"},
+    {"id": "LINCOLN_TP_RRI",     "path": "Tires", "fmt": { "len": 16, "max": 150,   "div": 20,               "nullmax": 150, "unit": "psi"    }, "name": "Rear right inner tire pressure",      "suggestedMetric": "rearRightTirePressure"},
     {"id": "LINCOLN_TP_RRI_RAW", "path": "Tires", "fmt": { "len": 16, "max": 65535,                                          "unit": "scalar" }, "name": "Rear right inner tire pressure slot", "description": "A rear inner tire position, which this car does not have. Raw count; dual-wheel trucks read it at 1/20 psi."},
     {"id": "LINCOLN_MAX_TP_RRI", "path": "Tires", "fmt": { "len": 16, "max": 150,   "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi"    }, "name": "Tire pressure, rear right inner"}
   ]},
 { "hdr": "726", "rax": "72E", "dbg": true, "cmd": {"22": "2818"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_TP_RLI",     "path": "Tires", "fmt": { "len": 16, "max": 3276,  "div": 20,                               "unit": "psi"    }, "name": "Rear left inner tire pressure",      "suggestedMetric": "rearLeftTirePressure"},
+    {"id": "LINCOLN_TP_RLI",     "path": "Tires", "fmt": { "len": 16, "max": 150,   "div": 20,               "nullmax": 150, "unit": "psi"    }, "name": "Rear left inner tire pressure",      "suggestedMetric": "rearLeftTirePressure"},
     {"id": "LINCOLN_TP_RLI_RAW", "path": "Tires", "fmt": { "len": 16, "max": 65535,                                          "unit": "scalar" }, "name": "Rear left inner tire pressure slot", "description": "A rear inner tire position, which this car does not have. Raw count; dual-wheel trucks read it at 1/20 psi."},
     {"id": "LINCOLN_MAX_TP_RLI", "path": "Tires", "fmt": { "len": 16, "max": 150,   "div": 20, "nullmin": 0, "nullmax": 150, "unit": "psi"    }, "name": "Tire pressure, rear left inner"}
   ]},
@@ -596,8 +595,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03E8"}, "freq": 5,
   "signals": [
-    {"id": "LINCOLN_OAR",       "path": "Engine", "fmt": {          "len": 16, "max": 1,                "div": 16384,               "sign": true,                  "unit": "scalar" },                             "name": "Octane adjustment"},
-    {"id": "LINCOLN_[ECU] OAR", "fmt":            {      "len": 16, "max": 1,  "min": -1, "div": 16384,               "sign": true,               "unit": "scalar" },               "name": "Octane adjust ratio"}
+    {"id": "LINCOLN_OAR", "path": "Engine", "fmt": { "len": 16, "max": 1, "min": -1, "div": 16384, "sign": true, "unit": "scalar" }, "name": "Octane adjustment"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "03EC"}, "freq": 0.25,
   "signals": [
@@ -1381,7 +1379,7 @@
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F443"}, "freq": 0.5,
   "signals": [
-    {"id": "LINCOLN_ENG_LOAD_ACT",     "path": "Engine", "fmt": { "len": 16, "max": 25700, "mul": 100, "div": 255, "unit": "percent" }, "name": "Engine load, actual", "suggestedMetric": "engineLoad"},
+    {"id": "LINCOLN_ENG_LOAD_ACT",     "path": "Engine", "fmt": { "len": 16, "max": 25700, "mul": 100, "div": 255, "unit": "percent" }, "name": "Engine load, actual", "suggestedMetric": "absoluteEngineLoad"},
     {"id": "LINCOLN_MAX_ENG_LOAD_ACT", "path": "Engine", "fmt": { "len": 16, "max": 25700, "mul": 100, "div": 255, "unit": "percent" }, "name": "Engine load, actual"}
   ]},
 { "hdr": "7E0", "rax": "7E8", "dbg": true, "cmd": {"22": "F446"}, "freq": 5,
